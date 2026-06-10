@@ -37,6 +37,7 @@ import DocumentLinksSection from '@/components/sections/development/DocumentLink
 import SocialProof from '@/components/sections/development/SocialProof';
 import TailInventory from '@/components/sections/development/TailInventory';
 import LeadGate from '@/components/ui/LeadGate';
+import WatchBuildingButton from '@/components/ui/WatchBuildingButton';
 
 interface DevelopmentPageProps {
   params: { slug: string };
@@ -127,6 +128,11 @@ export default function DevelopmentPage({ params }: DevelopmentPageProps) {
     <>
       <StickyTabNav tabs={unifiedTabs} title={devData.name} />
       <HeroSection development={devData} />
+      <div className="bg-charcoal-950 border-b border-ivory-100/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-center sm:justify-end">
+          <WatchBuildingButton slug={devData.slug} name={devData.name} />
+        </div>
+      </div>
       <ExecutiveSummary development={devData} />
       <MarketAnalysis development={devData} />
       <SalesPerformance development={devData} />
