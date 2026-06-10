@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     'Pendry Tampa', 'Pendry Residences Tampa', 'ONE Tampa condos',
     'Ritz-Carlton Tampa', 'Ritz-Carlton Residences Tampa Bayshore',
     'Tampa EDITION Residences', 'Hotel ORA Tampa',
-    'Aqua Westshore Tampa', 'Marina Pointe Luna Tampa',
-    'Altura Bayshore Tampa',
+    'Aqua Westshore Tampa', 'Altura Bayshore Tampa',
     // Sarasota buildings
     'Ritz-Carlton Sarasota Bay', 'Waldorf Astoria Sarasota',
+    'Rosewood Residences Lido Key', 'St Regis Longboat Key', 'Amara Sarasota', 'Saravela Sarasota', 'The Owen Sarasota',
     'One Park Sarasota', 'Peninsula Sarasota', 'SIX88 Sarasota',
     'Mira Mar Sarasota', 'The Edge Sarasota',
     // Long-tail
@@ -92,7 +92,7 @@ const jsonLd = {
   '@type': 'RealEstateAgent',
   name: 'Tampa Bay Market Report',
   description:
-    'Data-driven new construction market intelligence for Tampa Bay — 31 developments tracked across Pinellas, Hillsborough, and Sarasota counties. Every price sourced. Every claim cited.',
+    'Data-driven new construction market intelligence for Tampa Bay — 37 developments tracked across Pinellas, Hillsborough, and Sarasota counties. Every price sourced. Every claim cited.',
   url: siteUrl,
   telephone: '+1-727-205-9139',
   areaServed: [
