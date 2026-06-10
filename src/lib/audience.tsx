@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { track } from '@vercel/analytics';
 import { trackedDevelopments } from '@/data/market';
 
 // ─── Tier Definitions ─────────────────────────────────────────────
@@ -55,6 +56,12 @@ export function AudienceProvider({ children }: { children: ReactNode }) {
   function setTier(newTier: AudienceTier) {
     setTierState(newTier);
     localStorage.setItem(STORAGE_KEY, newTier);
+    // Capture audience identity in analytics (consumer vs realtor vs sales-agent)
+    try {
+      track('audience_tier', { tier: newTier });
+    } catch {
+      /* analytics optional — never block UX */
+    }
     // Clear selected development if switching away from sales-agent
     if (newTier !== 'sales-agent') {
       setSelectedDevState(null);

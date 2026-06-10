@@ -361,6 +361,16 @@ const developmentCoordinates: Record<string, { lat: number; lng: number }> = {
   'high-line-sarasota': { lat: 27.3356, lng: -82.5308 },
   'the-palm-625': { lat: 27.3325, lng: -82.5398 },
   'peninsula-sarasota': { lat: 27.3368, lng: -82.5375 },
+  // ── Added 2026-06-10 — new beach + Sarasota developments (geocoded by address) ──
+  'beach-flower-residences': { lat: 27.7967, lng: -82.7997 },   // 14048 Gulf Blvd, Madeira Beach
+  '211-skiff-point': { lat: 27.9788, lng: -82.8233 },           // 211 Skiff Point, Island Estates, Clearwater
+  'the-pearl-treasure-island': { lat: 27.7480, lng: -82.7690 }, // 10126 Gulf Blvd, Treasure Island
+  'amara-sarasota-bay': { lat: 27.3343, lng: -82.5487 },        // 550 Golden Gate Point, Sarasota
+  'rosewood-residences-lido-key': { lat: 27.3097, lng: -82.5762 }, // 1000 Benjamin Franklin Dr, Lido Key
+  'saravela-sarasota': { lat: 27.3402, lng: -82.5443 },         // 430 N Tamiami Trail, Sarasota
+  'st-regis-longboat-key': { lat: 27.3682, lng: -82.6162 },     // 1620 Gulf of Mexico Dr, Longboat Key
+  'the-gallery-sarasota': { lat: 27.3404, lng: -82.5392 },      // 1305 4th St, Rosemary District, Sarasota
+  'the-owen-golden-gate-point': { lat: 27.3356, lng: -82.5462 }, // 325 Golden Gate Point, Sarasota
 };
 
 // ─── Derivation: Development → DevelopmentSummary ───────────────────────────

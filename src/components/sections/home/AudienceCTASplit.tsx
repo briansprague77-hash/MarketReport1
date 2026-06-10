@@ -3,8 +3,10 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeUp, defaultViewport } from '@/lib/animations';
+import { useAudience } from '@/lib/audience';
 
 export default function AudienceCTASplit() {
+  const { setTier } = useAudience();
   return (
     <section className="py-20 bg-charcoal-900/40 border-t border-ivory-100/5">
       <div className="container-luxury">
@@ -19,7 +21,7 @@ export default function AudienceCTASplit() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <Link href="/realtor-resources" className="flex h-full">
+          <Link href="/realtor-resources" className="flex h-full" onClick={() => setTier('realtor')}>
             <motion.div
               initial="hidden" whileInView="visible" viewport={defaultViewport} variants={fadeUp}
               className="group flex flex-col w-full rounded-2xl border border-gold-500/20 bg-charcoal-900/60 hover:border-gold-500/50 hover:bg-charcoal-800/80 transition-all p-10 h-full"
@@ -31,7 +33,7 @@ export default function AudienceCTASplit() {
             </motion.div>
           </Link>
 
-          <Link href="/developments" className="flex h-full">
+          <Link href="/developments" className="flex h-full" onClick={() => setTier('consumer')}>
             <motion.div
               initial="hidden" whileInView="visible" viewport={defaultViewport} variants={fadeUp}
               className="group flex flex-col w-full rounded-2xl border border-ivory-100/10 bg-charcoal-900/60 hover:border-ivory-100/30 hover:bg-charcoal-800/80 transition-all p-10 h-full"

@@ -22,13 +22,21 @@ export type { County, DevelopmentType };
 
 // ─── Pipeline Overview ──────────────────────────────────────────────────────
 
+// Counts/units derive from trackedDevelopments so they never drift from the data.
+const _devCount = (c: County) => trackedDevelopments.filter((d) => d.county === c).length;
+const _pinellasDevs = _devCount('pinellas');
+const _hillsboroughDevs = _devCount('hillsborough');
+const _sarasotaDevs = _devCount('sarasota');
+const _totalDevs = trackedDevelopments.length;
+const _totalUnits = trackedDevelopments.reduce((sum, d) => sum + (d.units ?? 0), 0);
+
 export const pipeline = {
-  totalUnitsInPipeline: 3934, // 3 counties (2026-06-10). Net vs 3,596: −256 Marina Pointe T2/T3, +24 Pinellas beach, +570 new Sarasota (Amara 54, Rosewood Lido 65, Saravela 293, St Regis LBK 69, Gallery 60, Owen 29).
-  totalProjectValue: '$7.6B+', // Full Tampa Bay pipeline (Jun 2026) — Sarasota ultra-luxury (Rosewood, St Regis, Saravela) adds materially.
-  activeDevelopments: 37,     // 14 Pinellas + 6 Hillsborough + 17 Sarasota
-  pinellasDevelopments: 14,
-  hillsboroughDevelopments: 6,
-  sarasotaDevelopments: 17,
+  totalUnitsInPipeline: _totalUnits,      // computed from trackedDevelopments
+  totalProjectValue: '$7.6B+',            // Manual estimate (unit × price not modeled); refine as needed.
+  activeDevelopments: _totalDevs,         // computed
+  pinellasDevelopments: _pinellasDevs,    // computed
+  hillsboroughDevelopments: _hillsboroughDevs,
+  sarasotaDevelopments: _sarasotaDevs,
   marketsTracked: [
     'Downtown St. Petersburg',
     'St. Pete Beach',
@@ -48,9 +56,9 @@ export const pipeline = {
 
 export const heroStats = [
   {
-    value: '37',
+    value: String(_totalDevs),
     label: 'Developments Tracked',
-    sublabel: '14 Pinellas · 6 Hillsborough · 17 Sarasota',
+    sublabel: `${_pinellasDevs} Pinellas · ${_hillsboroughDevs} Hillsborough · ${_sarasotaDevs} Sarasota`,
   },
   {
     value: '7.6',
@@ -65,9 +73,9 @@ export const heroStats = [
     sublabel: 'Pinellas · Hillsborough · Sarasota',
   },
   {
-    value: '3,934',
+    value: _totalUnits.toLocaleString(),
     label: 'Pipeline Units',
-    sublabel: '37 developments across 3 counties',
+    sublabel: `${_totalDevs} developments across 3 counties`,
   },
 ];
 
@@ -257,9 +265,9 @@ export const marketTrends: YoYTrend[] = [
 // Sourced from tracked developments + Stellar MLS (Jun 2026).
 export const marketSummaryStats = {
   avgPsf: '$1,105', // Pipeline average across all tracked developments with PSF data (Jun 2026). Range: $722 (Reflection) to $1,563 (Tampa EDITION resale).
-  pipelineUnits: '3,934', // 3 counties (2026-06-10): delisted Marina Pointe T2/T3; added 3 Pinellas beach + 6 Sarasota new
-  pipelineValue: '$7.6B+', // Full Tampa Bay pipeline value.
-  activeDevelopments: '37', // 14 Pinellas + 6 Hillsborough + 17 Sarasota
+  pipelineUnits: _totalUnits.toLocaleString(), // computed from trackedDevelopments
+  pipelineValue: '$7.6B+', // Full Tampa Bay pipeline value (manual estimate).
+  activeDevelopments: String(_totalDevs), // computed
   asOfDate: '2026-06-10',
 };
 
