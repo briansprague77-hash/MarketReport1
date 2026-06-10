@@ -14,6 +14,7 @@ import {
 } from '@/lib/animations';
 import { competitorReferences, trackedDevelopments } from '@/data/market';
 import { useAudience } from '@/lib/audience';
+import { identifyVisitor } from '@/lib/signals';
 
 // ─── Resale-only / completed building model ──────────────────────────────────
 // A building belongs here when the developer has sold out and the only way in is
@@ -87,6 +88,7 @@ export default function ResaleMarketClient() {
           message: form.message || undefined,
         }),
       });
+      if (res.ok) identifyVisitor(form.email, { role: tier, building: form.building, source: 'resale-market' });
       setStatus(res.ok ? 'done' : 'error');
     } catch {
       setStatus('error');
