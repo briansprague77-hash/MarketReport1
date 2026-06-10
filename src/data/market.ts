@@ -7,7 +7,7 @@
  *
  * Sources: Developer disclosures, MLS (Stellar MLS), and proprietary broker research.
  *
- * Last updated: 2026-04-09
+ * Last updated: 2026-06-10
  */
 
 import { DevelopmentStatus, County, DevelopmentType, BadgeType } from '@/types/development';
@@ -23,11 +23,11 @@ export type { County, DevelopmentType };
 // ─── Pipeline Overview ──────────────────────────────────────────────────────
 
 export const pipeline = {
-  totalUnitsInPipeline: 3596, // All 3 counties: Pinellas ~1,239 + Hillsborough ~1,528 + Sarasota ~829. Computed from trackedDevelopments.
-  totalProjectValue: '$6.1B+', // Full Tampa Bay pipeline. Branded premium: +50.5% ($1,345/SF branded vs $894/SF independent).
-  activeDevelopments: 31,     // 12 Pinellas + 8 Hillsborough + 11 Sarasota
-  pinellasDevelopments: 12,
-  hillsboroughDevelopments: 8,
+  totalUnitsInPipeline: 3340, // All 3 counties after 2026-06-10 delistings (Four Seasons 0u, Marina Pointe Luna 151u + III 105u removed). Pinellas + Hillsborough + Sarasota.
+  totalProjectValue: '$5.7B+', // Full Tampa Bay pipeline (down ~$0.4B after Marina Pointe Towers 2 & 3 delisted).
+  activeDevelopments: 28,     // 11 Pinellas + 6 Hillsborough + 11 Sarasota
+  pinellasDevelopments: 11,
+  hillsboroughDevelopments: 6,
   sarasotaDevelopments: 11,
   marketsTracked: [
     'Downtown St. Petersburg',
@@ -41,19 +41,19 @@ export const pipeline = {
     'The Quay',
     'Golden Gate Point',
   ],
-  asOfDate: '2026-04-16',
+  asOfDate: '2026-06-10',
 };
 
 // ─── Macro Market Stats (hero-level) ────────────────────────────────────────
 
 export const heroStats = [
   {
-    value: '31',
+    value: '28',
     label: 'Developments Tracked',
-    sublabel: '12 Pinellas · 8 Hillsborough · 11 Sarasota',
+    sublabel: '11 Pinellas · 6 Hillsborough · 11 Sarasota',
   },
   {
-    value: '6.1',
+    value: '5.7',
     prefix: '$',
     suffix: 'B+',
     label: 'Total Pipeline Value',
@@ -65,9 +65,9 @@ export const heroStats = [
     sublabel: 'Pinellas · Hillsborough · Sarasota',
   },
   {
-    value: '3,596',
+    value: '3,340',
     label: 'Pipeline Units',
-    sublabel: '31 developments across 3 counties',
+    sublabel: '28 developments across 3 counties',
   },
 ];
 
@@ -108,11 +108,11 @@ export const competitorReferences: CompetitorReference[] = [
   {
     name: 'Saltaire St. Pete',
     location: 'Downtown St. Petersburg',
-    units: 154,
-    avgPsf: 1050,
-    delivery: 'Delivered',
-    status: 'Resale',
-    note: 'Competitor reference — no dedicated page. Used in market comparisons.',
+    units: 192,
+    avgPsf: 916,
+    delivery: 'Delivered 2023',
+    status: 'Resale only — sold out',
+    note: 'Completed/resale-only reference (developer sold out). Resale benchmark $916/SF avg across 6 closings Mar–Jun 2026 (Stellar MLS); 8 active, 2 pending. Used in market comparisons.',
   },
 ];
 
@@ -129,7 +129,7 @@ export interface YoYTrend {
   county?: 'pinellas' | 'hillsborough' | 'sarasota' | 'all'; // Which county tab this belongs to
 }
 
-// Verified from Stellar MLS broker reports (Feb 2026) and developer disclosures.
+// Verified from Stellar MLS agent single-line exports (Jun 2026) and developer disclosures.
 export const marketTrends: YoYTrend[] = [
   {
     metric: 'Pinellas Pipeline Total',
@@ -233,34 +233,34 @@ export const marketTrends: YoYTrend[] = [
   },
   {
     metric: 'Pipeline Developments',
-    current: '31',
-    prior: '28',
-    change: '+3 new projects',
-    direction: 'up',
-    period: 'Apr 2026',
+    current: '28',
+    prior: '31',
+    change: '−3 delisted (Four Seasons, Marina Pointe T2 & T3)',
+    direction: 'down',
+    period: 'Jun 2026',
     source: 'Tracked developments',
     county: 'all',
   },
   {
     metric: 'Pipeline Units',
-    current: '3,596',
-    prior: 'N/A',
-    change: '3 counties',
-    direction: 'stable',
-    period: 'Apr 2026',
+    current: '3,340',
+    prior: '3,596',
+    change: '−256 (Marina Pointe T2 & T3 delisted)',
+    direction: 'down',
+    period: 'Jun 2026',
     source: 'Developer disclosures',
     county: 'all',
   },
 ];
 
 // Pre-construction pipeline summary stats.
-// Sourced from tracked developments + Stellar MLS (Feb 2026).
+// Sourced from tracked developments + Stellar MLS (Jun 2026).
 export const marketSummaryStats = {
-  avgPsf: '$1,105', // Pipeline average across all tracked developments with PSF data (Apr 2026). Range: $727 (Reflection) to $1,563 (Tampa EDITION).
-  pipelineUnits: '3,596', // All 3 counties: Pinellas ~1,239 + Hillsborough ~1,528 + Sarasota ~829
-  pipelineValue: '$6.1B+', // Full Tampa Bay pipeline value.
-  activeDevelopments: '31', // 12 Pinellas + 8 Hillsborough + 11 Sarasota
-  asOfDate: '2026-04-16',
+  avgPsf: '$1,105', // Pipeline average across all tracked developments with PSF data (Jun 2026). Range: $722 (Reflection) to $1,563 (Tampa EDITION resale).
+  pipelineUnits: '3,340', // All 3 counties after 2026-06-10 delistings (Four Seasons, Marina Pointe Towers 2 & 3 removed)
+  pipelineValue: '$5.7B+', // Full Tampa Bay pipeline value.
+  activeDevelopments: '28', // 11 Pinellas + 6 Hillsborough + 11 Sarasota
+  asOfDate: '2026-06-10',
 };
 
 // ─── Demand Drivers ─────────────────────────────────────────────────────────
@@ -395,7 +395,7 @@ export const methodology = {
 export const marketVelocity = {
   contractsPerMonth: 16,
   absorptionLabel: '~16 contracts/month (Pinellas pipeline)',
-  asOfDate: '2026-04-09',
+  asOfDate: '2026-06-10',
   source: 'Proprietary broker research',
 };
 

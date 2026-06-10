@@ -5,7 +5,8 @@ import { DevelopmentProfile } from '@/types/development-profile';
 import { waldorfAstoria } from './waldorf-astoria';
 import { artHouse } from './art-house';
 import { residencesAt400CentralDevelopment } from './400-central';
-import { fourSeasonsStPete } from './four-seasons-stpete';
+// DELISTED 2026-06-10: Four Seasons St. Pete — PMG vision; 100% pre-sale condition not met, offer dead. File archived.
+// import { fourSeasonsStPete } from './four-seasons-stpete';
 import { kolter3rdAve } from './kolter-3rd-ave';
 import { kolterBayfront } from './kolter-bayfront';
 
@@ -28,8 +29,9 @@ import { pendryTampa } from './pendry-tampa';
 import { tampaEdition } from './tampa-edition';
 import { hotelOra } from './hotel-ora';
 import { aquaWestshore } from './aqua-westshore';
-import { marinaPointeLuna } from './marina-pointe-luna';
-import { marinaPointeIii } from './marina-pointe-iii';
+// DELISTED 2026-06-10: Marina Pointe sales office closed; Towers 2 (Luna) & 3 (III) not selling at this time. Files archived.
+// import { marinaPointeLuna } from './marina-pointe-luna';
+// import { marinaPointeIii } from './marina-pointe-iii';
 
 // ─── DevelopmentSummary — shared card/listing type ──────────────────────────
 // Canonical definition lives here; market.ts re-exports it.
@@ -87,8 +89,7 @@ export const developments: Record<string, Development> = {
   'waldorf-astoria': waldorfAstoria,
   'art-house': artHouse,
   '400-central': residencesAt400CentralDevelopment,
-  'four-seasons-stpete': fourSeasonsStPete,
-  // Note: Four Seasons is in the developments record (full Development type), not here
+  // DELISTED 2026-06-10: 'four-seasons-stpete' removed from pipeline (dead deal — see import note above).
 };
 
 export function getDevelopment(slug: string): Development | undefined {
@@ -116,8 +117,7 @@ export const developmentProfiles: Record<string, DevelopmentProfile> = {
   'tampa-edition': tampaEdition,
   'hotel-ora': hotelOra,
   'aqua-westshore': aquaWestshore,
-  'marina-pointe-luna': marinaPointeLuna,
-  'marina-pointe-iii': marinaPointeIii,
+  // DELISTED 2026-06-10: 'marina-pointe-luna' & 'marina-pointe-iii' removed from pipeline (not selling — see import note above).
 };
 
 /**
@@ -309,7 +309,7 @@ export function getAllDevelopmentSlugs(): string[] {
 export function isFullDevelopment(slug: string): boolean {
   // Developments with complete analytical data get the full 25-component template.
   // As developments gain pricing ladders, competitors, and market evidence, add them here.
-  const fullDevelopments = ['waldorf-astoria', 'art-house', '400-central', 'four-seasons-stpete'];
+  const fullDevelopments = ['waldorf-astoria', 'art-house', '400-central'];
   return fullDevelopments.includes(slug);
 }
 
