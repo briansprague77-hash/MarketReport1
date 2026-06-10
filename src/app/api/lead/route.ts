@@ -16,6 +16,32 @@ export async function POST(request: NextRequest) {
 
     const timestamp = new Date().toISOString();
 
+    // ── 0. Optional enrichment (Apollo) — title + company from email ─────────
+    let enriched = '';
+    if (process.env.APOLLO_API_KEY) {
+      try {
+        const r = await fetch('https://api.apollo.io/api/v1/people/match', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'X-Api-Key': process.env.APOLLO_API_KEY,
+          },
+          body: JSON.stringify({ email }),
+        });
+        if (r.ok) {
+          const j = await r.json();
+          const person = j?.person;
+          const title = person?.title || '';
+          const org = person?.organization?.name || '';
+          if (title || org) enriched = `[Apollo: ${[title, org].filter(Boolean).join(' @ ')}]`;
+        }
+      } catch {
+        /* enrichment is best-effort — never block the lead */
+      }
+    }
+    const storedMessage = [message, enriched].filter(Boolean).join(' ') || null;
+
     // ── 1. Store lead in Supabase ────────────────────────────────────────────
     const resend = new Resend(process.env.RESEND_API_KEY);
     const supabase = getSupabase();
@@ -27,7 +53,7 @@ export async function POST(request: NextRequest) {
       source: source || 'unknown',
       development: development || null,
       interest: interest || null,
-      message: message || null,
+      message: storedMessage,
       created_at: timestamp,
     });
 
@@ -68,6 +94,7 @@ export async function POST(request: NextRequest) {
               </tr>
               ${development ? `<tr><td style="padding: 8px 0; color: #999;">Development</td><td style="padding: 8px 0; color: #1F1F24;">${development}</td></tr>` : ''}
               ${interest ? `<tr><td style="padding: 8px 0; color: #999;">Interest</td><td style="padding: 8px 0; color: #1F1F24;">${interest}</td></tr>` : ''}
+              ${enriched ? `<tr><td style="padding: 8px 0; color: #999;">Enriched</td><td style="padding: 8px 0; color: #1F1F24;">${enriched.replace(/^\[Apollo: |\]$/g, '')}</td></tr>` : ''}
             </table>
             ${message ? `<hr style="border: none; border-top: 1px solid #e5e5e5; margin: 20px 0;" /><p style="font-size: 14px; color: #1F1F24; line-height: 1.6;">${message}</p>` : ''}
             <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 20px 0;" />
