@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
 import { useAudience } from '@/lib/audience';
+import { identifyVisitor } from '@/lib/signals';
 
 interface LeadGateProps {
   /** Unique id for this gate — unlock state is remembered per id (localStorage). */
@@ -65,6 +66,8 @@ export default function LeadGate({
         }),
       });
       if (!res.ok) throw new Error();
+      // De-anonymize this visitor in Common Room
+      identifyVisitor(email, { role: tier, source, development });
       // Unlock everywhere for this visitor (one email unlocks the site's gates)
       localStorage.setItem(storageKey, email);
       localStorage.setItem('tbmr-gate-global', email);
