@@ -21,6 +21,11 @@ import { lakeHouse } from './lake-house';
 import { theBeachmaker } from './the-beachmaker';
 import { marinaBayResidences } from './marina-bay-residences';
 
+// Sarasota development profiles (promoted from stubs → full detail pages)
+import { ritzCarltonSarasotaBay } from './ritz-carlton-sarasota-bay';
+import { rosewoodResidencesLidoKey } from './rosewood-residences-lido-key';
+import { stRegisLongboatKey } from './st-regis-longboat-key';
+
 // Mid-tier development profiles (Hillsborough)
 import { alturaBayshore } from './altura-bayshore';
 import { oneTampa } from './one-tampa';
@@ -109,6 +114,10 @@ export const developmentProfiles: Record<string, DevelopmentProfile> = {
   'kolter-bayfront': kolterBayfront,
   'the-beachmaker': theBeachmaker,
   'marina-bay-residences': marinaBayResidences,
+  // Sarasota (promoted to detail pages)
+  'ritz-carlton-sarasota-bay': ritzCarltonSarasotaBay,
+  'rosewood-residences-lido-key': rosewoodResidencesLidoKey,
+  'st-regis-longboat-key': stRegisLongboatKey,
   // Hillsborough County
   'altura-bayshore': alturaBayshore,
   'one-tampa': oneTampa,
@@ -663,7 +672,10 @@ const profileTags: Record<string, string[]> = {
   'tampa-edition':          ['Tier 1 Luxury', 'Hospitality Brand'],
   'hotel-ora':              ['Tier 2 Luxury', 'Lifestyle Brand', 'Mixed-Use', 'Short-Term Rental'],
   'aqua-westshore':         ['Tier 2 Luxury', 'Waterfront'],
-  'marina-pointe-luna':     ['Tier 2 Luxury', 'Waterfront'],
+  // Sarasota
+  'ritz-carlton-sarasota-bay': ['Tier 1 Luxury', 'Hospitality Brand', 'Waterfront'],
+  'rosewood-residences-lido-key': ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand'],
+  'st-regis-longboat-key': ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand'],
 };
 
 function profileToSummary(slug: string, p: DevelopmentProfile): DevelopmentSummary {
@@ -780,27 +792,8 @@ const sarasotaStubs: DevelopmentSummary[] = [
     description: '86-unit, 18-story luxury tower (One Park Residences) at 668 Quay Commons in The Quay district, Downtown Sarasota, by PMG (Property Markets Group — same developer as Waldorf Astoria St. Petersburg). Sales by Coldwell Banker. Stellar MLS (Jun 2026): 4 active + 1 pending, $2.7M–$6.6M (~$1,050–$1,764/SF, avg ~$1,423/SF). Delivery 2027.',
     stories: 18,
   },
-  {
-    slug: 'ritz-carlton-sarasota-bay',
-    name: 'Ritz-Carlton Residences Sarasota Bay',
-    location: 'The Quay',
-    county: 'sarasota',
-    status: 'under-construction',
-    statusLabel: statusLabelFromStatus('under-construction'),
-    units: 78,
-    delivery: 'Q4 2026',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 1 Luxury', 'Hospitality Brand', 'Waterfront'],
-    developer: 'Kolter Urban',
-    address: '555 Quay Commons, Sarasota, FL 34236',
-    price: '$4.03M - $12.5M',
-    bedrooms: '3-4',
-    sqft: '3,500-6,000 SF',
-    avgPsf: 1713,
-    description: '78 waterfront residences (3,500–6,000 SF) across 20 stories in The Quay district. Structure reached full height April 2026. By Kolter Urban, sales by Premier Sotheby\'s International Realty. 20,000 SF Harbor Club, Ritz-Carlton Spa, on-site dining, concierge. Q4 2026 delivery. Stellar MLS (Jun 2026): 8 active (avg ~$1,713/SF) + 13 pending (avg ~$1,529/SF) — strong absorption, $4.03M–$12.5M.',
-    stories: 20,
-  },
+  // NOTE: 'ritz-carlton-sarasota-bay' promoted to a full DevelopmentProfile
+  // (src/data/developments/ritz-carlton-sarasota-bay.ts) → has a detail page.
 
   // ── Downtown Sarasota ───────────────────────────────────────────────────────
   {
@@ -1015,27 +1008,7 @@ const sarasotaStubs: DevelopmentSummary[] = [
     submarket: 'Golden Gate Point',
     description: '54-residence twin-tower luxury condominium (31 north + 23 south) replacing Pier 550 on Golden Gate Point, by The Ronto Group (Naples). 7 floor plans ~2,600–3,500 SF, from $4.2M. Stellar MLS (Jun 2026): 6 active + 3 pending, $3.99M–$7.25M (~$1,758–$2,776/SF, avg ~$2,066/SF). Delivery 2026.',
   },
-  {
-    slug: 'rosewood-residences-lido-key',
-    name: 'Rosewood Residences Lido Key',
-    location: 'Lido Key',
-    county: 'sarasota',
-    status: 'under-construction',
-    statusLabel: statusLabelFromStatus('under-construction'),
-    units: 65,
-    delivery: '2026',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand', 'New to Market'],
-    developer: 'The Ronto Group / Wheelock Street Capital',
-    address: '1000 Benjamin Franklin Dr, Sarasota, FL 34236',
-    price: '$6.8M - $14.15M',
-    bedrooms: '3-4',
-    avgPsf: 2213,
-    stories: 11,
-    submarket: 'Lido Key',
-    description: '65 beachfront residences in an 11-story tower on Lido Key — the first stand-alone residential project under the Rosewood brand — by The Ronto Group with Wheelock Street Capital. Topped out Nov 2024. Stellar MLS (Jun 2026): 6 active + 5 pending, $6.8M–$14.15M (~$1,764–$2,863/SF, avg ~$2,213/SF). The ultra-luxury ceiling of the Sarasota market.',
-  },
+  // NOTE: 'rosewood-residences-lido-key' promoted to a full DevelopmentProfile → detail page.
   {
     slug: 'saravela-sarasota',
     name: 'Saravela Sarasota',
@@ -1057,28 +1030,7 @@ const sarasotaStubs: DevelopmentSummary[] = [
     submarket: 'Downtown Sarasota',
     description: '293 residences (282 condominiums + 11 street-level townhomes) across two towers up to 19 stories at 430 N Tamiami Trail, downtown Sarasota, by GSP Development. Kimmich Smith Architecture; interiors by ID & Design International; 47,000+ SF of amenities; rental flexibility. Stellar MLS (Jun 2026): 4 active, $998K–$3.45M (~$1,166–$1,651/SF, avg ~$1,348/SF) — among the most attainable new construction downtown. Delivery 2027.',
   },
-  {
-    slug: 'st-regis-longboat-key',
-    name: 'St. Regis Residences Longboat Key',
-    location: 'Longboat Key',
-    county: 'sarasota',
-    status: 'delivered',
-    statusLabel: statusLabelFromStatus('delivered'),
-    units: 69,
-    delivery: 'Available Now',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand'],
-    developer: 'Unicorp National Developments',
-    architect: 'SB Architects',
-    address: '1620 Gulf of Mexico Dr, Longboat Key, FL 34228',
-    price: '$2.4M - $13M',
-    bedrooms: '1-3',
-    sqft: '1,553-5,895 SF',
-    avgPsf: 2147,
-    submarket: 'Longboat Key',
-    description: '69 private branded residences within the $376M St. Regis Longboat Key Resort (five six-story buildings, 18 acres), by Unicorp National Developments; architecture by SB Architects. Completed 2024. Stellar MLS (Jun 2026): 5 active, 3 recent closings avg $1,815/SF; active asks $2,400,000–$13,000,000 (~$1,114–$3,105/SF, avg ~$2,147/SF). Hospitality-branded resale market now forming.',
-  },
+  // NOTE: 'st-regis-longboat-key' promoted to a full DevelopmentProfile → detail page.
   {
     slug: 'the-gallery-sarasota',
     name: 'The Gallery Sarasota',
