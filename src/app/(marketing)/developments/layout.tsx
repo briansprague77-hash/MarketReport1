@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'New Construction Developments — Tampa Bay',
-    description: '31 developments tracked. Every price sourced. Filter by status, county, price range, delivery year.',
+    description: '37 developments tracked. Every price sourced. Filter by status, county, price range, delivery year.',
   },
 };
 

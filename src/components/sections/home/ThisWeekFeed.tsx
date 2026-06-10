@@ -50,7 +50,7 @@ export default function ThisWeekFeed() {
             What Moved
           </h2>
           <p className="text-ivory-400/60 max-w-2xl">
-            Auto-computed from lifecycle milestones, price-history entries, and incentive updates across the 26-building pipeline. Last 90 days.
+            Auto-computed from lifecycle milestones, price-history entries, and incentive updates across the Tampa Bay pipeline. Last 90 days.
           </p>
         </motion.div>
 
