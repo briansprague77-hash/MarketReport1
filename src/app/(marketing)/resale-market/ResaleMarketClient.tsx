@@ -13,6 +13,7 @@ import {
   defaultViewport,
 } from '@/lib/animations';
 import { competitorReferences, trackedDevelopments } from '@/data/market';
+import { useAudience } from '@/lib/audience';
 
 // ─── Resale-only / completed building model ──────────────────────────────────
 // A building belongs here when the developer has sold out and the only way in is
@@ -62,6 +63,7 @@ function buildResaleSet(): ResaleBuilding[] {
 
 export default function ResaleMarketClient() {
   const buildings = useMemo(buildResaleSet, []);
+  const { tier } = useAudience();
 
   // ── Lead form state ──
   const [form, setForm] = useState({ name: '', email: '', phone: '', building: '', message: '' });
@@ -80,8 +82,8 @@ export default function ResaleMarketClient() {
           name: form.name,
           phone: form.phone,
           development: form.building || undefined,
-          source: 'resale-market',
-          interest: 'resale',
+          source: `resale-market · ${tier}`,
+          interest: `resale · ${tier}`,
           message: form.message || undefined,
         }),
       });
