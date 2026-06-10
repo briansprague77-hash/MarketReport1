@@ -696,9 +696,9 @@ export const waldorfAstoria: Development = {
   tailInventory: {
     totalUnits: 163,
     developerUnitsRemaining: 105, // Updated: $175M+ in sales → ~58 contracted (Smith & Associates, Apr 7 2026)
-    developerAskingPsf: 1503,     // Avg LP/SF of 7 active developer MLS listings
+    developerAskingPsf: 1553,     // Avg LP/SF of 6 active developer MLS listings (Jun 2026), range $1,306–$1,879/SF
     resaleListings: 0,            // ZERO — pre-construction, no closings, no resales possible
-    daysOnMarketAvg: 129,         // Avg CDOM across 7 active listings
+    daysOnMarketAvg: 60,          // Avg CDOM across 6 active listings (Jun 2026)
     keyInsights: [
       '7 active MLS listings ($2.9M–$6.7M, avg $1,503/SF). All by Smith & Associates (Golub, Bolla, Borsik Niebles).',
       '4 cancelled listings = 4 executed contracts (~$13.1M). Developer cancels MLS when buyer signs.',
@@ -748,7 +748,7 @@ export const waldorfAstoria: Development = {
     unitMix: '2-4 BR',
     floorPlans: { typical: 6, penthouse: 6 },
     ceilingHeight: { typical: '10 ft', penthouse: '~11,000 SF duplex with private rooftop pools' },
-    pricePerSqFt: { average: 1503, min: 1255, max: 1879 }, // Stellar MLS avg LP/SqFt (Mar 2026) — 7 active listings
+    pricePerSqFt: { average: 1553, min: 1306, max: 1879 }, // Stellar MLS avg LP/SqFt (Jun 2026) — 6 active listings
     totalProjectCost: '$500M',
     officeSpaceSF: 73000,
     retailSpaceSF: 10000,

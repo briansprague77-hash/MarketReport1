@@ -7,7 +7,7 @@ export const artHouse: Development = {
   fullName: 'Art House St. Petersburg',
   tagline: 'Where Art Meets Architecture on the Downtown Waterfront',
   heroDescription:
-    'A 42-story luxury condominium — developer has 11 units remaining — in the heart of Downtown St. Petersburg. 212 of 244 residences closed (86.9%) with avg $877/SF. 11 developer listings + 16 owner resales active at avg $1,010/SF. Panoramic bay views, 33,000+ SF of resort amenities, and an unmatched walkable lifestyle. Developed by Kolter Urban with interiors by IDDI and architecture by SB Architects.',
+    'A 42-story luxury condominium in the heart of Downtown St. Petersburg. 212 of 244 residences closed (86.9%, realized avg $877/SF). As of Jun 2026, 29 active MLS listings (17 developer + 12 owner resale) plus 2 pending; recent closings (19, Mar–May 2026) averaged $939/SF, with active asks averaging ~$1,013/SF. Panoramic bay views, 33,000+ SF of resort amenities, and an unmatched walkable lifestyle. Developed by Kolter Urban with interiors by IDDI and architecture by SB Architects.',
   location: '275 1st Ave S, St. Petersburg 33701',
   address: '275 1st Ave S',
   county: 'pinellas',
@@ -20,7 +20,7 @@ export const artHouse: Development = {
   developer: 'Kolter Urban',
   architect: 'SB Architects',
   description:
-    'Downtown St. Petersburg\'s first 40-story tower and its most consequential comp set. 212 of 244 units closed at $877/SF average — and 18 buyers have already flipped (8.5% flip rate), with resales clearing at $1,010/SF, a 15% premium over developer close. That spread is the market\'s real-time verdict: Art House was underpriced at launch. 11 developer units and 16 owner resales remain active. At 53 units/month peak velocity (89 closings in December 2025 alone), Kolter proved institutional-scale absorption in a market that had never tested it. Developer sellout projected Q3 2026.',
+    'Downtown St. Petersburg\'s first 40-story tower and its most consequential comp set. 212 of 244 units closed at $877/SF realized average, and recent resales clear well above developer-close — the 19 closings of Mar–May 2026 averaged $939/SF. That spread is the market\'s real-time verdict: Art House was underpriced at launch. As of Jun 2026, 29 active MLS listings (17 developer + 12 owner resale) plus 2 pending remain. At 53 units/month peak velocity (89 closings in December 2025 alone), Kolter proved institutional-scale absorption in a market that had never tested it.',
   hoaPerSqFt: 0.83,
 
   // Contact & social
@@ -420,18 +420,18 @@ export const artHouse: Development = {
   // ─── Executive Summary ───────────────────────────────────────────────────────
   executiveSummary: {
     overview:
-      'Art House is a 42-story, 244-residence luxury condominium by Kolter Urban in the heart of Downtown St. Petersburg. Positioned at 275 1st Ave S with direct proximity to the waterfront, the Dalí Museum, and St. Pete\'s arts district, Art House targets discerning buyers seeking a walkable urban lifestyle with resort-caliber amenities. Developer has 11 active listings remaining — 212 of 244 units (86.9%) closed via MLS at avg $877/SF. 11 developer listings + 16 owner resales active.',
+      'Art House is a 42-story, 244-residence luxury condominium by Kolter Urban in the heart of Downtown St. Petersburg. Positioned at 275 1st Ave S with direct proximity to the waterfront, the Dalí Museum, and St. Pete\'s arts district, Art House targets discerning buyers seeking a walkable urban lifestyle with resort-caliber amenities. 212 of 244 units (86.9%) have closed at a realized avg of $877/SF. As of Jun 2026, 29 active MLS listings (17 developer + 12 owner resale) plus 2 pending remain.',
     marketSignificance:
       'Art House represents the next generation of Downtown St. Petersburg high-rise living. At 42 stories, it is among the tallest residential towers on the Gulf Coast and has established a realized pricing tier ($603–$1,950/SF, avg $877/SF) that benchmarks the luxury condo market. Total closed volume exceeds $351M. The 33,000+ SF Cloud 9 amenity level and Kolter Urban\'s proven track record (ONE St. Petersburg, Saltaire) position this as a flagship product. The active resale market at avg $1,010/SF (15% above developer avg) signals strong secondary demand.',
     salesPerformance:
-      '214 MLS closings (212 unique developer sales + 2 resales) between December 2025 and March 2026. Peak month was December 2025 with 89 closings, declining to 56 (Jan) → 45 (Feb) → 24 (Mar). Developer has 11 units remaining (Smith & Associates — Allen, Denis, Doring) — 11 active developer listings (Smith & Associates). 16 owner resales + 11 developer listings active (27 total) at avg $1,010/SF (15% above developer avg of $877/SF). 18 units already flipped (8.5%). Cash purchases dominated closings (67.3%), SP/LP ratio held at 1.00.',
-    title: 'Delivering — 11 Developer Units Remaining — Resale Market Emerging',
+      'The delivery wave drove 212 of 244 units (86.9%) closed at a realized avg $877/SF (range $603–$1,950), with December 2025 peaking at 89 closings. As of Jun 2026, 29 active MLS listings (17 developer via Smith & Associates + 12 owner resale) plus 2 pending. The most recent 19 closings (Mar–May 2026) averaged $939/SF — above the cumulative realized average — while active asks average ~$1,013/SF. SP/LP on closings held at ~1.00.',
+    title: 'Delivered — Resale Market Established',
     subtitle: 'Complete closed-sale analytics and resale market intelligence for Downtown St. Petersburg\'s flagship luxury tower.',
-    leadNarrative: 'Art House is the first 40+ story luxury condominium to fully deliver in Downtown St. Petersburg — and its developer sales are complete. With 212 of 244 units (86.9%) closed at an average of $877/SF, this is no longer a projection. It is the established comparable. The resale market has already emerged: 16 owner resale listings at avg $910/SF plus 11 developer listings at avg $1,090/SF.',
-    leadNarrativeFollowup: 'For advisors working any premium listing within the downtown corridor, Art House closed-sale data — by floor, by orientation, by residence type — is the baseline that informs your pricing recommendations. The emerging resale market and 18 flips (8.5% of buyers) provide early secondary-market signals.',
+    leadNarrative: 'Art House is the first 40+ story luxury condominium to fully deliver in Downtown St. Petersburg. With 212 of 244 units (86.9%) closed at a realized average of $877/SF, this is no longer a projection — it is the established comparable. The secondary market is active: as of Jun 2026, 29 active listings (17 developer + 12 owner resale) and 2 pending, with recent closings averaging $939/SF.',
+    leadNarrativeFollowup: 'For advisors working any premium listing within the downtown corridor, Art House closed-sale data — by floor, by orientation, by residence type — is the baseline that informs your pricing recommendations. The active resale market and recent $939/SF closings provide live secondary-market signals.',
     pullquote: {
-      text: '212 units closed in 4 months at $877/SF avg. Developer has 11 active listings remaining. 27 listings active (11 developer + 16 resale). 18 units already flipped.',
-      attribution: 'Stellar MLS Closed-Sale Analysis, April 2026',
+      text: '212 of 244 units (86.9%) closed at $877/SF realized avg. As of Jun 2026: 29 active (17 developer + 12 resale) + 2 pending; recent closings avg $939/SF.',
+      attribution: 'Stellar MLS Agent Single-Line, Jun 2026',
     },
   },
 

@@ -5,7 +5,8 @@ import { DevelopmentProfile } from '@/types/development-profile';
 import { waldorfAstoria } from './waldorf-astoria';
 import { artHouse } from './art-house';
 import { residencesAt400CentralDevelopment } from './400-central';
-import { fourSeasonsStPete } from './four-seasons-stpete';
+// DELISTED 2026-06-10: Four Seasons St. Pete — PMG vision; 100% pre-sale condition not met, offer dead. File archived.
+// import { fourSeasonsStPete } from './four-seasons-stpete';
 import { kolter3rdAve } from './kolter-3rd-ave';
 import { kolterBayfront } from './kolter-bayfront';
 
@@ -28,8 +29,9 @@ import { pendryTampa } from './pendry-tampa';
 import { tampaEdition } from './tampa-edition';
 import { hotelOra } from './hotel-ora';
 import { aquaWestshore } from './aqua-westshore';
-import { marinaPointeLuna } from './marina-pointe-luna';
-import { marinaPointeIii } from './marina-pointe-iii';
+// DELISTED 2026-06-10: Marina Pointe sales office closed; Towers 2 (Luna) & 3 (III) not selling at this time. Files archived.
+// import { marinaPointeLuna } from './marina-pointe-luna';
+// import { marinaPointeIii } from './marina-pointe-iii';
 
 // ─── DevelopmentSummary — shared card/listing type ──────────────────────────
 // Canonical definition lives here; market.ts re-exports it.
@@ -87,8 +89,7 @@ export const developments: Record<string, Development> = {
   'waldorf-astoria': waldorfAstoria,
   'art-house': artHouse,
   '400-central': residencesAt400CentralDevelopment,
-  'four-seasons-stpete': fourSeasonsStPete,
-  // Note: Four Seasons is in the developments record (full Development type), not here
+  // DELISTED 2026-06-10: 'four-seasons-stpete' removed from pipeline (dead deal — see import note above).
 };
 
 export function getDevelopment(slug: string): Development | undefined {
@@ -116,8 +117,7 @@ export const developmentProfiles: Record<string, DevelopmentProfile> = {
   'tampa-edition': tampaEdition,
   'hotel-ora': hotelOra,
   'aqua-westshore': aquaWestshore,
-  'marina-pointe-luna': marinaPointeLuna,
-  'marina-pointe-iii': marinaPointeIii,
+  // DELISTED 2026-06-10: 'marina-pointe-luna' & 'marina-pointe-iii' removed from pipeline (not selling — see import note above).
 };
 
 /**
@@ -309,7 +309,7 @@ export function getAllDevelopmentSlugs(): string[] {
 export function isFullDevelopment(slug: string): boolean {
   // Developments with complete analytical data get the full 25-component template.
   // As developments gain pricing ladders, competitors, and market evidence, add them here.
-  const fullDevelopments = ['waldorf-astoria', 'art-house', '400-central', 'four-seasons-stpete'];
+  const fullDevelopments = ['waldorf-astoria', 'art-house', '400-central'];
   return fullDevelopments.includes(slug);
 }
 
@@ -743,10 +743,11 @@ const sarasotaStubs: DevelopmentSummary[] = [
     tags: ['Tier 1 Luxury', 'Waterfront', 'Mixed-Use', 'New to Market'],
     developer: 'Kolter Urban',
     address: 'Near Quay Commons & Boulevard of the Arts, Sarasota, FL',
-    price: 'From $1.5M',
+    price: 'From $1.34M',
     bedrooms: '1-3',
     sqft: '1,200-3,000+ SF',
-    description: '117 residences in a 20-story tower at the former Hyatt Regency site, part of a mixed-use development including a Hyatt Centric Harborside hotel and ground-level restaurant. Units 1,200–3,000+ SF, 1-3 bedroom layouts, pricing from $1.5M. Passed $40M in sales within first 45 days of pre-construction offering. Reservation-to-contract conversion began February 1, 2026; site cleared February 2026. Construction start targeted Q3 2026; delivery H2 2028. By Kolter Urban. Sales by Premier Sotheby\'s International Realty at 50 Central Ave, Suite 100, Sarasota. "Selective pricing" available on six units through end of April 2026.',
+    avgPsf: 1202,
+    description: '117 residences in a 20-story tower at the former Hyatt Regency site, part of a mixed-use development including a Hyatt Centric Harborside hotel and ground-level restaurant. Units 1,200–3,000+ SF, 1-3 bedroom layouts. By Kolter Urban; sales by Premier Sotheby\'s International Realty. Construction start targeted Q3 2026; delivery H2 2028. Stellar MLS (Jun 2026): 7 active (avg ~$1,202/SF) and 20 pending (avg ~$1,221/SF) — exceptional absorption, with 27 residences active-or-under-contract; range $1.34M–$4.8M.',
     stories: 20,
   },
   {
@@ -760,10 +761,13 @@ const sarasotaStubs: DevelopmentSummary[] = [
     delivery: 'Q1-Q2 2027',
     hasPage: false,
     type: 'Condominium',
-    tags: ['Tier 2 Luxury'],
+    tags: ['Tier 2 Luxury', 'Waterfront'],
     developer: 'PMG',
-    address: '20 N Lemon Ave, Sarasota, FL 34236',
-    description: '86-unit, 18-story luxury tower in Downtown Sarasota by PMG (Property Markets Group — same developer as Waldorf Astoria St. Petersburg). Sales by Coldwell Banker Global Luxury. Under construction with Q1-Q2 2027 delivery. Contact: (941) 225-4775.',
+    address: '668 Quay Commons, Sarasota, FL 34236',
+    price: '$2.7M - $6.6M',
+    bedrooms: '3-5',
+    avgPsf: 1423,
+    description: '86-unit, 18-story luxury tower (One Park Residences) at 668 Quay Commons in The Quay district, Downtown Sarasota, by PMG (Property Markets Group — same developer as Waldorf Astoria St. Petersburg). Sales by Coldwell Banker. Stellar MLS (Jun 2026): 4 active + 1 pending, $2.7M–$6.6M (~$1,050–$1,764/SF, avg ~$1,423/SF). Delivery 2027.',
     stories: 18,
   },
   {
@@ -779,9 +783,12 @@ const sarasotaStubs: DevelopmentSummary[] = [
     type: 'Condominium',
     tags: ['Tier 1 Luxury', 'Hospitality Brand', 'Waterfront'],
     developer: 'Kolter Urban',
-    address: '475 Quay Commons, Sarasota, FL 34236',
+    address: '555 Quay Commons, Sarasota, FL 34236',
+    price: '$4.03M - $12.5M',
+    bedrooms: '3-4',
     sqft: '3,500-6,000 SF',
-    description: '78 waterfront residences (3,500–6,000 SF) across 20 stories in The Quay district. Structure reached full height April 2026. By Kolter Urban, sales by Premier Sotheby\'s International Realty. Amenities include 20,000 SF Harbor Club, Ritz-Carlton Spa, wellness facilities, on-site dining, and concierge. Q4 2026 delivery. Contact: info@theresidencessarasotabay.com, (941) 499-8704.',
+    avgPsf: 1713,
+    description: '78 waterfront residences (3,500–6,000 SF) across 20 stories in The Quay district. Structure reached full height April 2026. By Kolter Urban, sales by Premier Sotheby\'s International Realty. 20,000 SF Harbor Club, Ritz-Carlton Spa, on-site dining, concierge. Q4 2026 delivery. Stellar MLS (Jun 2026): 8 active (avg ~$1,713/SF) + 13 pending (avg ~$1,529/SF) — strong absorption, $4.03M–$12.5M.',
     stories: 20,
   },
 
@@ -804,8 +811,8 @@ const sarasotaStubs: DevelopmentSummary[] = [
     price: '$3.27M - $3.57M',
     bedrooms: '2-3',
     sqft: '3,145-3,553 SF',
-    avgPsf: 1040,
-    description: '27 residences across 10 stories at the corner of Cocoanut and Fruitville by JEBCO Ventures and ORE Development. Units range 3,145–3,553 SF with two- and three-bedroom layouts, pricing from $3.27M to $3.57M ($948–$1,131 PSF). Topped out December 2025 with buyers signing the commemorative final concrete pour. $46M construction loan closed December 2024. BDG Architects (architecture), DSDG Architects (interiors), Voeller Construction (GC), McWilliams Ballard (sales/marketing). Rooftop lounge, concierge services, smart home systems. On schedule for fall 2026 move-in.',
+    avgPsf: 1032,
+    description: '27 residences across 10 stories at the corner of Cocoanut and Fruitville by JEBCO Ventures and ORE Development. Units 3,145–3,553 SF, 2-3BR. Topped out December 2025; on schedule for fall 2026 move-in. BDG Architects, DSDG Architects (interiors), Voeller Construction (GC). Stellar MLS (Jun 2026): near sellout — only 2 active + 1 pending remain (active ~$933–$1,132/SF, avg ~$1,032/SF; pending at $1,458/SF).',
     stories: 10,
   },
   {
@@ -821,8 +828,11 @@ const sarasotaStubs: DevelopmentSummary[] = [
     type: 'Condominium',
     tags: ['Tier 1 Luxury', 'Hospitality Brand'],
     developer: 'WMG',
-    address: '1390 Main St, Sarasota, FL',
-    description: '86-unit, 18-story Waldorf Astoria branded tower by WMG (not PMG — Sarasota Waldorf has different ownership than St. Petersburg Waldorf). Construction start late 2026, estimated delivery ~2029.',
+    address: '1390 Main St, Sarasota, FL 34236',
+    price: '$2.95M - $6.9M',
+    bedrooms: '2-4',
+    avgPsf: 1395,
+    description: '86-unit, 18-story Waldorf Astoria branded tower by WMG (not PMG — Sarasota Waldorf has different ownership than St. Petersburg Waldorf). Construction start late 2026, estimated delivery ~2029. Stellar MLS (Jun 2026): 2 active, $2.95M–$6.9M (~$1,233–$1,557/SF, avg ~$1,395/SF) — early pre-sales listings via Michael Saunders.',
     stories: 18,
   },
   {
@@ -837,11 +847,12 @@ const sarasotaStubs: DevelopmentSummary[] = [
     hasPage: false,
     type: 'Condominium',
     tags: ['Tier 2 Luxury', 'Lifestyle Brand', 'Mixed-Use'],
-    developer: 'TBD',
+    developer: 'Trepp Developments',
+    architect: 'Hoyt Architects',
     address: '1703 Main St, Sarasota, FL 34236',
     price: 'From $1.8M',
-    description: '35 private residences + boutique hotel component in a 16-story mixed-use tower at 1703 Main Street. Residences from $1.8M. Positions as "curated urban living" with resort-style amenities integrated with downtown walkability. Sales contact: Brian Wacnik (The Sarasota Real Estate Guy), (941) 206-8794. 2026 opening. NOTE: Developer company not publicly disclosed — update when confirmed.',
-    stories: 16,
+    description: '35 private residences + a 120-room boutique hotel in a 17-story mixed-use tower at 1703 Main Street. By Trepp Developments; Hoyt Architects with interiors by NY-based Andre Kikoski. "Curated urban living" with resort-style amenities. Not yet listing on Stellar MLS (developer-direct pre-sales). 2026 opening. Sales: Brian Wacnik, (941) 206-8794.',
+    stories: 17,
   },
   {
     slug: 'six88-residences',
@@ -861,7 +872,7 @@ const sarasotaStubs: DevelopmentSummary[] = [
     price: '$2.48M - $11.88M',
     sqft: '1,990-6,267 SF',
     avgPsf: 1896,
-    description: '10 full-floor residences across 9 stories on Golden Gate Point by Vandyk Properties (sequel to their ONE88 project). Unit sizes 1,990–6,267 SF; pricing from $2.48M for lower floors to $11.88M for the 6,267 SF penthouse (~$1,896/SF). DSDG Architects (Mark Sultana) designed the dramatic sail-like triangular structure to maximize 360-degree bay views from a unique land plot. Originally projected for 2023, delivery was delayed significantly — now scheduled June 2026. Amenities: club room, pool, rooftop terrace, fitness center, dog grooming, marina lounge with boat slips and paddleboard launch, jetted swim spa. 2 secure parking spaces per unit.',
+    description: '10 full-floor residences across 9 stories on Golden Gate Point by Vandyk Properties (sequel to their ONE88 project). Unit sizes 1,990–6,267 SF; from $2.48M (lower floors) to $11.88M for the 6,267 SF penthouse. DSDG Architects (Mark Sultana) — sail-like triangular structure with 360-degree bay views. Delivery June 2026. Stellar MLS (Jun 2026): near sellout — 2 active + 2 pending (pending ~$1,431–$1,838/SF; active span $1,345–$2,573/SF on a 10-unit building).',
     stories: 9,
   },
   {
@@ -879,8 +890,9 @@ const sarasotaStubs: DevelopmentSummary[] = [
     developer: 'Seaward Development',
     architect: 'Nichols Architects',
     address: '65 S Palm Ave, Sarasota, FL',
-    price: '$3.8M - $7M+',
-    description: '70-unit luxury tower across twin 18-story buildings (35 units per tower) behind the historic 1922 Mira Mar Plaza. Pricing from $3.8M with penthouses to $7M+. City Commission unanimously approved the comprehensive plan amendment May 2025. Sales gallery opened October 2025. Architecture by Nichols Architects, interiors by Clear pH Design, GC: Suffolk Construction. Sales exclusively by Coldwell Banker Realty (Nicholle DiPinto McKiernan, Georgia Kopelousos). The project includes a ~$30M restoration of the historic Mediterranean Revival Mira Mar Plaza, funded by condo sales revenue. End of 2028 delivery.',
+    price: '$4.17M - $8.28M',
+    avgPsf: 1663,
+    description: '70-unit luxury tower across twin 18-story buildings (35 units per tower) behind the historic 1922 Mira Mar Plaza. Architecture by Nichols Architects, interiors by Clear pH Design, GC: Suffolk Construction; sales by Coldwell Banker Realty (McKiernan, Kopelousos). Includes a ~$30M restoration of the historic Mira Mar Plaza. Delivery end of 2028. Stellar MLS (Jun 2026): 5 active, $4.17M–$8.28M (~$1,261–$2,147/SF, avg ~$1,663/SF).',
     stories: 18,
   },
   {
@@ -900,7 +912,7 @@ const sarasotaStubs: DevelopmentSummary[] = [
     address: '1360 Ringling Blvd, Sarasota, FL 34236',
     bedrooms: '2-5',
     sqft: '2,000-4,500 SF',
-    description: '172 units (103 market-rate luxury condos in an 18-story west tower + 69 attainable rental units in a 9-10 story east tower) by a three-way partnership: Lutgert Companies, R&P Holdings, and Barron Collier. Kobi Karp Architecture (Miami). Units range 2,000–4,500 SF with 2-5 bedroom layouts. Developed under Florida\'s Live Local Act, requiring the affordable housing component to access height/density allowances. $26M land assemblage across 5 parcels. 18,000–32,000 SF of street-level retail. STALLED at Development Review Committee — required fourth DRC submittal, no construction start date. Pricing not yet released. Presentation gallery was planned to open winter 2025/26.',
+    description: '172 units (103 market-rate luxury condos in an 18-story west tower + 69 attainable units in a 9-10 story east tower) by a three-way partnership: Lutgert Companies, R&P Holdings, and Barron Collier. Kobi Karp Architecture (Miami). Units 2,000–4,500 SF, 2-5BR. Developed under Florida\'s Live Local Act. As of May 2026, received partial DRC staff sign-off (May 20) — progressing toward final clearance after earlier submittals; presentation gallery opening with friends-and-family pricing. Not yet on Stellar MLS (developer-direct reservations). Pricing not yet publicly released.',
     stories: 18,
   },
   {
@@ -969,13 +981,213 @@ const sarasotaStubs: DevelopmentSummary[] = [
     description: '22 residences across twin flanking towers at 253 Golden Gate Point, surrounded by Sarasota Bay, by Gault Family Companies (6th-generation, 160-year homebuilding legacy based in Westport, CT). Nearing completion — only 3-4 residences remain (B residence on 8th floor at 2,670 SF remaining as of April 2026). Unit sizes 2,400–3,000+ SF, 3-bedroom configurations. Starting prices escalated from $2M to $2.6M to $3.7M to current $3.75M+ ($1,500–$1,563/SF). No shared walls between any units. Tower A has one residence per floor with 360-degree views; larger tower has two residences per floor with service-hallway separation. Weathered Hurricane Milton (October 2024) with minimal impact. Hoyt Architects, Gilbane Building Company (GC). Shared raised pool deck connecting the two towers. Sales by Coldwell Banker Realty (Georgia Salaverri, Steven Windsor).',
     stories: 9,
   },
+
+  // ── Added 2026-06-10 — net-new Sarasota-market developments (Stellar MLS + sourced specs) ──
+  {
+    slug: 'amara-sarasota-bay',
+    name: 'Amara on Sarasota Bay',
+    location: 'Golden Gate Point',
+    county: 'sarasota',
+    status: 'under-construction',
+    statusLabel: statusLabelFromStatus('under-construction'),
+    units: 54,
+    delivery: '2026',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Waterfront', 'New to Market'],
+    developer: 'The Ronto Group',
+    address: '550 & 590 Golden Gate Point, Sarasota, FL 34236',
+    price: '$3.99M - $7.25M',
+    bedrooms: '2-4',
+    sqft: '2,272-3,308 SF',
+    avgPsf: 2066,
+    stories: 9,
+    submarket: 'Golden Gate Point',
+    description: '54-residence twin-tower luxury condominium (31 north + 23 south) replacing Pier 550 on Golden Gate Point, by The Ronto Group (Naples). 7 floor plans ~2,600–3,500 SF, from $4.2M. Stellar MLS (Jun 2026): 6 active + 3 pending, $3.99M–$7.25M (~$1,758–$2,776/SF, avg ~$2,066/SF). Delivery 2026.',
+  },
+  {
+    slug: 'rosewood-residences-lido-key',
+    name: 'Rosewood Residences Lido Key',
+    location: 'Lido Key',
+    county: 'sarasota',
+    status: 'under-construction',
+    statusLabel: statusLabelFromStatus('under-construction'),
+    units: 65,
+    delivery: '2026',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand', 'New to Market'],
+    developer: 'The Ronto Group / Wheelock Street Capital',
+    address: '1000 Benjamin Franklin Dr, Sarasota, FL 34236',
+    price: '$6.8M - $14.15M',
+    bedrooms: '3-4',
+    avgPsf: 2213,
+    stories: 11,
+    submarket: 'Lido Key',
+    description: '65 beachfront residences in an 11-story tower on Lido Key — the first stand-alone residential project under the Rosewood brand — by The Ronto Group with Wheelock Street Capital. Topped out Nov 2024. Stellar MLS (Jun 2026): 6 active + 5 pending, $6.8M–$14.15M (~$1,764–$2,863/SF, avg ~$2,213/SF). The ultra-luxury ceiling of the Sarasota market.',
+  },
+  {
+    slug: 'saravela-sarasota',
+    name: 'Saravela Sarasota',
+    location: 'Downtown Sarasota',
+    county: 'sarasota',
+    status: 'pre-sales',
+    statusLabel: statusLabelFromStatus('pre-sales'),
+    units: 293,
+    delivery: '2027',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 2 Luxury', 'Mixed-Use', 'Short-Term Rental', 'New to Market'],
+    developer: 'GSP Development',
+    address: '430 N Tamiami Trail, Sarasota, FL 34236',
+    price: '$998K - $3.45M',
+    bedrooms: '1-3',
+    avgPsf: 1348,
+    stories: 19,
+    submarket: 'Downtown Sarasota',
+    description: '293 residences (282 condominiums + 11 street-level townhomes) across two towers up to 19 stories at 430 N Tamiami Trail, downtown Sarasota, by GSP Development. Kimmich Smith Architecture; interiors by ID & Design International; 47,000+ SF of amenities; rental flexibility. Stellar MLS (Jun 2026): 4 active, $998K–$3.45M (~$1,166–$1,651/SF, avg ~$1,348/SF) — among the most attainable new construction downtown. Delivery 2027.',
+  },
+  {
+    slug: 'st-regis-longboat-key',
+    name: 'St. Regis Residences Longboat Key',
+    location: 'Longboat Key',
+    county: 'sarasota',
+    status: 'delivered',
+    statusLabel: statusLabelFromStatus('delivered'),
+    units: 69,
+    delivery: 'Available Now',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand'],
+    developer: 'Unicorp National Developments',
+    architect: 'SB Architects',
+    address: '1620 Gulf of Mexico Dr, Longboat Key, FL 34228',
+    price: '$2.4M - $13M',
+    bedrooms: '1-3',
+    sqft: '1,553-5,895 SF',
+    avgPsf: 2147,
+    submarket: 'Longboat Key',
+    description: '69 private branded residences within the $376M St. Regis Longboat Key Resort (five six-story buildings, 18 acres), by Unicorp National Developments; architecture by SB Architects. Completed 2024. Stellar MLS (Jun 2026): 5 active, 3 recent closings avg $1,815/SF; active asks $2,400,000–$13,000,000 (~$1,114–$3,105/SF, avg ~$2,147/SF). Hospitality-branded resale market now forming.',
+  },
+  {
+    slug: 'the-gallery-sarasota',
+    name: 'The Gallery Sarasota',
+    location: 'Rosemary District, Downtown Sarasota',
+    county: 'sarasota',
+    status: 'delivered',
+    statusLabel: statusLabelFromStatus('delivered'),
+    units: 60,
+    delivery: 'Available Now',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 2 Luxury', 'Mixed-Use', 'New to Market'],
+    developer: 'Palm One Real Estate & Development / The Simpson Organization',
+    address: '1305 4th St, Sarasota, FL 34236',
+    price: '$795K - $1.995M',
+    bedrooms: '1-3',
+    avgPsf: 942,
+    stories: 6,
+    submarket: 'Downtown Sarasota',
+    description: '60-residence, 6-level mixed-use condominium in the Rosemary District (1305 4th St), by Palm One Real Estate & Development with The Simpson Organization. 1–3BR with rooftop pool terrace, fitness center, social lounge. Stellar MLS (Jun 2026): 9 active, $795K–$1.995M (~$842–$1,065/SF, avg ~$942/SF) — the most attainable entry in the downtown Sarasota new-construction set.',
+  },
+  {
+    slug: 'the-owen-golden-gate-point',
+    name: 'The Owen Golden Gate Point',
+    location: 'Golden Gate Point',
+    county: 'sarasota',
+    status: 'under-construction',
+    statusLabel: statusLabelFromStatus('under-construction'),
+    units: 29,
+    delivery: 'Q2 2026',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Waterfront', 'Boutique', 'New to Market'],
+    developer: 'The Ronto Group / Wheelock Street Capital',
+    address: '325 Golden Gate Point, Sarasota, FL 34236',
+    price: '$2.54M - $3.74M',
+    bedrooms: '3',
+    avgPsf: 1225,
+    stories: 10,
+    submarket: 'Golden Gate Point',
+    description: '29-residence boutique luxury mid-rise (10 floors) at 325 Golden Gate Point, by The Ronto Group with Wheelock Street Capital. Broke ground June 2024; delivery Q2 2026. Stellar MLS (Jun 2026): 4 active + 3 pending + 1 closed ($1,236/SF), $2.54M–$3.74M (~$993–$1,485/SF, avg ~$1,225/SF).',
+  },
 ];
 
 // ─── Pinellas County Stubs (beach submarkets without full data files yet) ───
 // Pinellas stubs: previously held The Beachmaker + Marina Bay Residences as
 // inline; now promoted to full profile files. Empty array preserved for
 // getAllDevelopmentSlugs compatibility and future net-new additions.
-const pinellasStubs: DevelopmentSummary[] = [];
+const pinellasStubs: DevelopmentSummary[] = [
+  // ── Added 2026-06-10 — net-new beach developments (Stellar MLS + developer) ──
+  {
+    slug: 'beach-flower-residences',
+    name: 'Beach Flower Residences',
+    location: 'Madeira Beach',
+    county: 'pinellas',
+    status: 'delivered',
+    statusLabel: 'Delivered',
+    units: 8,
+    delivery: 'Available Now',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Boutique', 'New to Market'],
+    developer: 'The Beach Flower LLC',
+    address: '14048 Gulf Blvd, Madeira Beach, FL 33708',
+    price: '$2.63M - $2.78M',
+    bedrooms: '2-3',
+    sqft: '1,791-2,330 SF',
+    avgPsf: 1428,
+    submarket: 'Madeira Beach',
+    description:
+      '8-unit boutique beachfront condominium at 14048 Gulf Blvd, Madeira Beach. Developed by The Beach Flower LLC; built by GSA Contracting Inc.; sales by Viewpoint Realty International / Compass Florida. 4 active MLS listings (Jun 2026): 2-3BR, 1,791–2,330 SF, $2.63M–$2.78M (~$1,171–$1,552/SF, avg ~$1,428/SF). Built 2024–2026.',
+  },
+  {
+    slug: '211-skiff-point',
+    name: '211 Skiff Point',
+    location: 'Island Estates, Clearwater',
+    county: 'pinellas',
+    status: 'pre-sales',
+    statusLabel: 'Pre-Sales / Re-Sales',
+    units: 12,
+    delivery: '2024',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 2 Luxury', 'Waterfront', 'Boutique', 'New to Market'],
+    developer: 'River Construction Services',
+    address: '211 Skiff Point, Clearwater, FL 33767',
+    price: '$1.49M - $1.72M',
+    bedrooms: '3',
+    sqft: '1,887-2,026 SF',
+    avgPsf: 829,
+    stories: 5,
+    submarket: 'Island Estates',
+    description:
+      '12-unit boutique Intracoastal-waterfront condominium at 211 Skiff Point, Island Estates, Clearwater. 5 stories, 3BR full-floor-style residences 1,887–2,026 SF. Developer: River Construction Services; sales by Smith & Associates. 7 active MLS listings (Jun 2026): $1.49M–$1.89M (~$750–$954/SF, avg ~$829/SF). Built 2024; mix of re-sales and remaining developer inventory.',
+  },
+  {
+    slug: 'the-pearl-treasure-island',
+    name: 'The Pearl',
+    location: 'Treasure Island',
+    county: 'pinellas',
+    status: 'delivered',
+    statusLabel: 'Delivered',
+    units: 4,
+    delivery: '2025',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Boutique', 'New to Market'],
+    developer: 'Alex Millman & Amy Krusemark',
+    address: '10126 Gulf Blvd, Treasure Island, FL 33706',
+    price: '$4.8M - $4.995M',
+    bedrooms: '4',
+    sqft: '~4,013 SF',
+    avgPsf: 1221,
+    stories: 5,
+    submarket: 'Treasure Island',
+    description:
+      'Ultra-boutique beachfront condominium at 10126 Gulf Blvd, Treasure Island — a 5-story building of just 4 full-floor penthouses with 180° Gulf views. Developed by Alex Millman & Amy Krusemark; sales by Century 21 Jim White & Associates. 3 active MLS listings (Jun 2026): 4BR, ~4,013 SF, $4.8M–$4.995M (~$1,196–$1,245/SF, avg ~$1,221/SF). Built 2025.',
+  },
+];
 
 // ─── Computed trackedDevelopments — single source of truth ───────────────────
 // Pinellas entries are DERIVED from data files, plus net-new inline stubs.

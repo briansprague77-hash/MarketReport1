@@ -84,10 +84,10 @@ export const hotelOra: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 1207,
-    currentPsf: 1466, // Avg of 29 active MLS listings (Apr 2026)
+    currentPsf: 1460, // Avg of 27 unique active MLS listings (Jun 2026; raw 29 incl. 2 duplicate relistings)
     currentPriceRange: '$870,616-$4,212,863',
-    priceChangePercent: 21.5, // $1,207 launch → $1,466 current avg
-    asOfDate: '2026-04-09',
+    priceChangePercent: 21.0, // $1,207 launch → $1,460 current avg
+    asOfDate: '2026-06-10',
     // MLS Active (Apr 2026): 29 listings — massive MLS presence
     //   Studios (479-578 SF): $871K-$961K ($1,591-$1,752/SF) — 7 listings
     //   1BR (772-803 SF): $1,195K ($1,548/SF) — 1 listing

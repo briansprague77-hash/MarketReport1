@@ -83,10 +83,10 @@ export const ritzCarltonTowerII: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 750, // Early Tower II developer pricing
-    currentPsf: 925, // Avg of 65 MLS closings
+    currentPsf: 917, // Avg of 72 MLS closings Jan–May 2026 (3015 S Ysabella / Bayshore Ysabella); 19 active avg $993/SF, 1 pending
     currentPriceRange: '$1,470,000-$7,850,000',
-    priceChangePercent: 23.3,
-    asOfDate: '2026-04-09',
+    priceChangePercent: 22.3,
+    asOfDate: '2026-06-10',
     // TOWER II MLS (Apr 2026): 65 sold + 19 active + 4 pending
     //   Sold: $1.47M-$6.74M, avg $925/SF across 63 unique units
     //   Active: 19 listings $1.89M-$7.85M (mix dev Toni Everett + resale agents)
