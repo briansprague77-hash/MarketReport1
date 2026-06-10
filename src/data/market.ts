@@ -23,10 +23,10 @@ export type { County, DevelopmentType };
 // ─── Pipeline Overview ──────────────────────────────────────────────────────
 
 export const pipeline = {
-  totalUnitsInPipeline: 3340, // All 3 counties after 2026-06-10 delistings (Four Seasons 0u, Marina Pointe Luna 151u + III 105u removed). Pinellas + Hillsborough + Sarasota.
-  totalProjectValue: '$5.7B+', // Full Tampa Bay pipeline (down ~$0.4B after Marina Pointe Towers 2 & 3 delisted).
-  activeDevelopments: 28,     // 11 Pinellas + 6 Hillsborough + 11 Sarasota
-  pinellasDevelopments: 11,
+  totalUnitsInPipeline: 3364, // 3 counties (2026-06-10): −256 delisted (Marina Pointe T2 151u + T3 105u) + 24 new beach (Beach Flower 8 + 211 Skiff Point 12 + The Pearl 4).
+  totalProjectValue: '$5.7B+', // Full Tampa Bay pipeline (Jun 2026).
+  activeDevelopments: 31,     // 14 Pinellas + 6 Hillsborough + 11 Sarasota
+  pinellasDevelopments: 14,
   hillsboroughDevelopments: 6,
   sarasotaDevelopments: 11,
   marketsTracked: [
@@ -48,9 +48,9 @@ export const pipeline = {
 
 export const heroStats = [
   {
-    value: '28',
+    value: '31',
     label: 'Developments Tracked',
-    sublabel: '11 Pinellas · 6 Hillsborough · 11 Sarasota',
+    sublabel: '14 Pinellas · 6 Hillsborough · 11 Sarasota',
   },
   {
     value: '5.7',
@@ -65,9 +65,9 @@ export const heroStats = [
     sublabel: 'Pinellas · Hillsborough · Sarasota',
   },
   {
-    value: '3,340',
+    value: '3,364',
     label: 'Pipeline Units',
-    sublabel: '28 developments across 3 counties',
+    sublabel: '31 developments across 3 counties',
   },
 ];
 
@@ -233,19 +233,19 @@ export const marketTrends: YoYTrend[] = [
   },
   {
     metric: 'Pipeline Developments',
-    current: '28',
+    current: '31',
     prior: '31',
-    change: '−3 delisted (Four Seasons, Marina Pointe T2 & T3)',
-    direction: 'down',
+    change: '−3 delisted, +3 new beach (Beach Flower, 211 Skiff Pt, The Pearl)',
+    direction: 'stable',
     period: 'Jun 2026',
     source: 'Tracked developments',
     county: 'all',
   },
   {
     metric: 'Pipeline Units',
-    current: '3,340',
+    current: '3,364',
     prior: '3,596',
-    change: '−256 (Marina Pointe T2 & T3 delisted)',
+    change: '−232 net (−256 Marina Pointe T2/T3, +24 new beach)',
     direction: 'down',
     period: 'Jun 2026',
     source: 'Developer disclosures',
@@ -257,9 +257,9 @@ export const marketTrends: YoYTrend[] = [
 // Sourced from tracked developments + Stellar MLS (Jun 2026).
 export const marketSummaryStats = {
   avgPsf: '$1,105', // Pipeline average across all tracked developments with PSF data (Jun 2026). Range: $722 (Reflection) to $1,563 (Tampa EDITION resale).
-  pipelineUnits: '3,340', // All 3 counties after 2026-06-10 delistings (Four Seasons, Marina Pointe Towers 2 & 3 removed)
+  pipelineUnits: '3,364', // 3 counties (2026-06-10): delisted Marina Pointe T2/T3; added Beach Flower, 211 Skiff Point, The Pearl
   pipelineValue: '$5.7B+', // Full Tampa Bay pipeline value.
-  activeDevelopments: '28', // 11 Pinellas + 6 Hillsborough + 11 Sarasota
+  activeDevelopments: '31', // 14 Pinellas + 6 Hillsborough + 11 Sarasota
   asOfDate: '2026-06-10',
 };
 

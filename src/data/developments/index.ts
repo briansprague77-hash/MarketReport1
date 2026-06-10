@@ -975,7 +975,77 @@ const sarasotaStubs: DevelopmentSummary[] = [
 // Pinellas stubs: previously held The Beachmaker + Marina Bay Residences as
 // inline; now promoted to full profile files. Empty array preserved for
 // getAllDevelopmentSlugs compatibility and future net-new additions.
-const pinellasStubs: DevelopmentSummary[] = [];
+const pinellasStubs: DevelopmentSummary[] = [
+  // ── Added 2026-06-10 — net-new beach developments (Stellar MLS + developer) ──
+  {
+    slug: 'beach-flower-residences',
+    name: 'Beach Flower Residences',
+    location: 'Madeira Beach',
+    county: 'pinellas',
+    status: 'delivered',
+    statusLabel: 'Delivered',
+    units: 8,
+    delivery: 'Available Now',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Boutique', 'New to Market'],
+    developer: 'The Beach Flower LLC',
+    address: '14048 Gulf Blvd, Madeira Beach, FL 33708',
+    price: '$2.63M - $2.78M',
+    bedrooms: '2-3',
+    sqft: '1,791-2,330 SF',
+    avgPsf: 1428,
+    submarket: 'Madeira Beach',
+    description:
+      '8-unit boutique beachfront condominium at 14048 Gulf Blvd, Madeira Beach. Developed by The Beach Flower LLC; built by GSA Contracting Inc.; sales by Viewpoint Realty International / Compass Florida. 4 active MLS listings (Jun 2026): 2-3BR, 1,791–2,330 SF, $2.63M–$2.78M (~$1,171–$1,552/SF, avg ~$1,428/SF). Built 2024–2026.',
+  },
+  {
+    slug: '211-skiff-point',
+    name: '211 Skiff Point',
+    location: 'Island Estates, Clearwater',
+    county: 'pinellas',
+    status: 'pre-sales',
+    statusLabel: 'Pre-Sales / Re-Sales',
+    units: 12,
+    delivery: '2024',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 2 Luxury', 'Waterfront', 'Boutique', 'New to Market'],
+    developer: 'River Construction Services',
+    address: '211 Skiff Point, Clearwater, FL 33767',
+    price: '$1.49M - $1.72M',
+    bedrooms: '3',
+    sqft: '1,887-2,026 SF',
+    avgPsf: 829,
+    stories: 5,
+    submarket: 'Island Estates',
+    description:
+      '12-unit boutique Intracoastal-waterfront condominium at 211 Skiff Point, Island Estates, Clearwater. 5 stories, 3BR full-floor-style residences 1,887–2,026 SF. Developer: River Construction Services; sales by Smith & Associates. 7 active MLS listings (Jun 2026): $1.49M–$1.89M (~$750–$954/SF, avg ~$829/SF). Built 2024; mix of re-sales and remaining developer inventory.',
+  },
+  {
+    slug: 'the-pearl-treasure-island',
+    name: 'The Pearl',
+    location: 'Treasure Island',
+    county: 'pinellas',
+    status: 'delivered',
+    statusLabel: 'Delivered',
+    units: 4,
+    delivery: '2025',
+    hasPage: false,
+    type: 'Condominium',
+    tags: ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Boutique', 'New to Market'],
+    developer: 'Alex Millman & Amy Krusemark',
+    address: '10126 Gulf Blvd, Treasure Island, FL 33706',
+    price: '$4.8M - $4.995M',
+    bedrooms: '4',
+    sqft: '~4,013 SF',
+    avgPsf: 1221,
+    stories: 5,
+    submarket: 'Treasure Island',
+    description:
+      'Ultra-boutique beachfront condominium at 10126 Gulf Blvd, Treasure Island — a 5-story building of just 4 full-floor penthouses with 180° Gulf views. Developed by Alex Millman & Amy Krusemark; sales by Century 21 Jim White & Associates. 3 active MLS listings (Jun 2026): 4BR, ~4,013 SF, $4.8M–$4.995M (~$1,196–$1,245/SF, avg ~$1,221/SF). Built 2025.',
+  },
+];
 
 // ─── Computed trackedDevelopments — single source of truth ───────────────────
 // Pinellas entries are DERIVED from data files, plus net-new inline stubs.
