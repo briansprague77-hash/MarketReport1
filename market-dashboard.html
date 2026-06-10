@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tampa Bay New Development Market Report — Interactive Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+<style>
+:root {
+  --charcoal: #1a1a2e;
+  --gold: #d4a853;
+  --ivory: #faf8f5;
+  --gold-light: rgba(212,168,83,0.15);
+  --gold-dark: #b8923e;
+  --text: #2d2d3a;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --white: #ffffff;
+  --success: #10b981;
+  --info: #3b82f6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ivory);color:var(--text);line-height:1.6}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--charcoal)}
+.header{background:var(--charcoal);color:var(--ivory);padding:2rem 2rem 1.5rem;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.header h1{font-size:1.6rem;letter-spacing:-0.02em}
+.header h1 span{color:var(--gold)}
+.header-controls{display:flex;align-items:center;gap:1rem}
+.header-tag{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-family:'Inter',sans-serif;font-weight:600}
+select{font-family:'Inter',sans-serif;padding:0.5rem 2rem 0.5rem 0.75rem;border:1px solid rgba(212,168,83,0.4);border-radius:6px;background:rgba(255,255,255,0.08);color:var(--ivory);font-size:0.85rem;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d4a853' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.6rem center}
+select option{background:var(--charcoal);color:var(--ivory)}
+.container{max-width:1280px;margin:0 auto;padding:1.5rem 2rem 3rem}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.kpi-card{background:var(--white);border-radius:10px;padding:1.25rem 1.5rem;border:1px solid var(--border);transition:box-shadow 0.2s}
+.kpi-card:hover{box-shadow:0 4px 20px rgba(26,26,46,0.08)}
+.kpi-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);font-weight:600;margin-bottom:0.35rem}
+.kpi-value{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--charcoal)}
+.kpi-sub{font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem}
+.section{margin-bottom:2rem}
+.section-title{font-size:1.15rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--gold);display:inline-block}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+.chart-card{background:var(--white);border-radius:10px;padding:1.5rem;border:1px solid var(--border)}
+.chart-card h3{font-size:1rem;margin-bottom:1rem}
+.chart-wrap{position:relative;width:100%;height:300px}
+.chart-wrap canvas{width:100%!important;height:100%!important}
+.absorption-card{background:var(--white);border-radius:10px;padding:1.5rem;border:1px solid var(--border);margin-bottom:2rem}
+.absorption-card h3{font-size:1rem;margin-bottom:1rem}
+.table-card{background:var(--white);border-radius:10px;padding:1.5rem;border:1px solid var(--border);margin-bottom:2rem;overflow-x:auto}
+.table-card h3{font-size:1rem;margin-bottom:1rem}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+thead{background:var(--charcoal);color:var(--ivory)}
+th{padding:0.65rem 1rem;text-align:left;font-weight:600;cursor:pointer;white-space:nowrap;user-select:none}
+th:hover{color:var(--gold)}
+th .sort-arrow{margin-left:4px;opacity:0.5}
+th.active .sort-arrow{opacity:1;color:var(--gold)}
+td{padding:0.6rem 1rem;border-bottom:1px solid var(--border)}
+tbody tr:hover{background:var(--gold-light)}
+.drivers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.driver-card{background:var(--white);border-radius:10px;padding:1.25rem;border:1px solid var(--border);text-align:center;border-top:3px solid var(--gold)}
+.driver-value{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);margin:0.5rem 0 0.25rem}
+.driver-label{font-size:0.8rem;color:var(--text-muted);line-height:1.4}
+.info-grid{display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;margin-bottom:2rem}
+.velocity-card{background:linear-gradient(135deg,var(--charcoal),#16213e);border-radius:10px;padding:2rem;color:var(--ivory);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.velocity-number{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:var(--gold);line-height:1}
+.velocity-unit{font-size:0.9rem;margin-top:0.5rem;color:rgba(250,248,245,0.7)}
+.velocity-label{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.75rem;color:var(--gold)}
+.comp-card{background:var(--white);border-radius:10px;padding:1.5rem;border:1px solid var(--border)}
+.comp-card h3{font-size:1rem;margin-bottom:1rem}
+.comp-row{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--border)}
+.comp-row:last-child{border-bottom:none}
+.comp-name{font-weight:600;color:var(--charcoal)}
+.comp-stats{display:flex;gap:1.5rem;font-size:0.85rem;color:var(--text-muted)}
+.comp-stat strong{color:var(--charcoal)}
+.footer{text-align:center;padding:2rem;font-size:0.75rem;color:var(--text-muted);border-top:1px solid var(--border)}
+.footer strong{color:var(--charcoal)}
+@media print{
+  .header{position:static;background:var(--charcoal)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  select{display:none}
+  .chart-wrap{height:250px}
+  body{font-size:10pt}
+}
+@media(max-width:1024px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .chart-grid{grid-template-columns:1fr}
+  .drivers-grid{grid-template-columns:repeat(2,1fr)}
+  .info-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .kpi-row{grid-template-columns:1fr}
+  .drivers-grid{grid-template-columns:1fr}
+  .header h1{font-size:1.2rem}
+  .container{padding:1rem}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <h1>Tampa Bay New Development <span>Market Report</span></h1>
+      <div class="header-tag">Interactive Dashboard — Data as of Feb 2026</div>
+    </div>
+    <div class="header-controls">
+      <select id="countyFilter" onchange="applyFilter()">
+        <option value="all">All Counties</option>
+        <option value="pinellas">Pinellas County</option>
+        <option value="hillsborough">Hillsborough County</option>
+        <option value="sarasota">Sarasota County</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="kpi-row" id="kpiRow">
+    <div class="kpi-card">
+      <div class="kpi-label">Developments Tracked</div>
+      <div class="kpi-value" id="kpiDevs">28</div>
+      <div class="kpi-sub">Across 3 counties</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Pipeline Value</div>
+      <div class="kpi-value" id="kpiValue">$2.1B+</div>
+      <div class="kpi-sub">Pinellas-only valuation</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Units</div>
+      <div class="kpi-value" id="kpiUnits">1,243</div>
+      <div class="kpi-sub">Pinellas pipeline</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg Price PSF</div>
+      <div class="kpi-value" id="kpiPSF">$1,449</div>
+      <div class="kpi-sub">List price per sq ft</div>
+    </div>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Developments by County</h3>
+      <div class="chart-wrap"><canvas id="countyChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Unit Mix Distribution</h3>
+      <div class="chart-wrap"><canvas id="unitMixChart"></canvas></div>
+    </div>
+  </div>
+  <div class="absorption-card">
+    <h3>Absorption Benchmarks (AES — Absorption Efficiency Score)</h3>
+    <div class="chart-wrap" style="height:200px"><canvas id="absorptionChart"></canvas></div>
+  </div>
+  <div class="table-card">
+    <h3>Market Trends — Waldorf Astoria MLS Activity (Feb 2026)</h3>
+    <table id="trendsTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Metric <span class="sort-arrow">&#8693;</span></th>
+          <th onclick="sortTable(1)">Value <span class="sort-arrow">&#8693;</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Avg List Price / SqFt</td><td>$1,449</td></tr>
+        <tr><td>Avg List Price</td><td>$3.69M</td></tr>
+        <tr><td>Days on Market (Avg)</td><td>100</td></tr>
+        <tr><td>PSF Range</td><td>$1,255 — $1,879</td></tr>
+        <tr><td>Active Listings</td><td>6</td></tr>
+        <tr><td>Cancelled / Contracted</td><td>3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <h2 class="section-title">Demand Drivers</h2>
+  </div>
+  <div class="drivers-grid">
+    <div class="driver-card">
+      <div class="driver-value">0%</div>
+      <div class="driver-label">State Income Tax<br><small>Florida advantage</small></div>
+    </div>
+    <div class="driver-card">
+      <div class="driver-value">3+</div>
+      <div class="driver-label">Branded Residences<br><small>Waldorf, Ritz, Roche Bobois</small></div>
+    </div>
+    <div class="driver-card">
+      <div class="driver-value">$1,449</div>
+      <div class="driver-label">Pre-Construction PSF<br><small>Current avg list</small></div>
+    </div>
+    <div class="driver-card">
+      <div class="driver-value">6</div>
+      <div class="driver-label">Limited Luxury Supply<br><small>Active luxury listings</small></div>
+    </div>
+  </div>
+  <div class="info-grid">
+    <div class="velocity-card">
+      <div class="velocity-number">16</div>
+      <div class="velocity-unit">contracts / month</div>
+      <div class="velocity-label">Pinellas Market Velocity</div>
+    </div>
+    <div class="comp-card">
+      <h3>Competitor References</h3>
+      <div class="comp-row">
+        <div class="comp-name">ONE St. Pete</div>
+        <div class="comp-stats">
+          <span><strong>253</strong> units</span>
+          <span><strong>$1,150</strong> PSF</span>
+        </div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Saltaire</div>
+        <div class="comp-stats">
+          <span><strong>154</strong> units</span>
+          <span><strong>$1,050</strong> PSF</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <strong>Tampa Bay New Development Market Report</strong> — Built by a broker who got tired of sending clients marketing flyers instead of real data.<br>
+  Data sourced from <strong>Stellar MLS</strong> &amp; <strong>FL DBPR</strong> — As of February 2026. No spin. No luxury lifestyle filler. Just sourced data.
+</div>
+<script>
+const developments = [
+  {name:'Waldorf Astoria',county:'pinellas',status:'Delivering'},
+  {name:'Art House',county:'pinellas',status:'Under Construction'},
+  {name:'400 Central',county:'pinellas',status:'Delivering'},
+  {name:'The Cade',county:'pinellas',status:'Pre-Sales'},
+  {name:'Roche Bobois',county:'pinellas',status:'Pre-Construction'},
+  {name:'Reflection',county:'pinellas',status:'Under Construction'},
+  {name:'Corey Landings',county:'pinellas',status:'Pre-Sales'},
+  {name:'Viceroy Clearwater',county:'pinellas',status:'Pre-Sales'},
+  {name:'Lake House',county:'pinellas',status:'Pre-Sales'},
+  {name:'Bayshore Tower',county:'hillsborough',status:'Under Construction'},
+  {name:'Aston Martin Residences Tampa',county:'hillsborough',status:'Pre-Sales'},
+  {name:'The Pendry Tampa',county:'hillsborough',status:'Pre-Construction'},
+  {name:'Riverwalk Place',county:'hillsborough',status:'Under Construction'},
+  {name:'The Boulevard',county:'hillsborough',status:'Pre-Sales'},
+  {name:'SoHo Tower',county:'hillsborough',status:'Pre-Construction'},
+  {name:'Heights Union',county:'hillsborough',status:'Delivering'},
+  {name:'Harbour Island Residences',county:'hillsborough',status:'Pre-Sales'},
+  {name:'The Ritz-Carlton Sarasota',county:'sarasota',status:'Under Construction'},
+  {name:'Epoch Sarasota',county:'sarasota',status:'Pre-Sales'},
+  {name:'The DeMarcay',county:'sarasota',status:'Delivering'},
+  {name:'Bayso Sarasota',county:'sarasota',status:'Pre-Sales'},
+  {name:'The Orchid',county:'sarasota',status:'Pre-Construction'},
+  {name:'Sarasota Collection',county:'sarasota',status:'Pre-Sales'},
+  {name:'Quay Sarasota',county:'sarasota',status:'Under Construction'},
+  {name:'ONE Park Sarasota',county:'sarasota',status:'Pre-Sales'},
+  {name:'Rosewood Residences',county:'sarasota',status:'Pre-Construction'},
+  {name:'Arya Sarasota',county:'sarasota',status:'Pre-Sales'},
+  {name:'The Mark Sarasota',county:'sarasota',status:'Pre-Construction'}
+];
+const countyColors = {pinellas:'#d4a853',hillsborough:'#3b82f6',sarasota:'#10b981'};
+const countyNames = {pinellas:'Pinellas',hillsborough:'Hillsborough',sarasota:'Sarasota'};
+let countyChart, unitMixChart, absorptionChart;
+document.addEventListener('DOMContentLoaded',()=>{ initCharts(); });
+function initCharts(){
+  const ctxC = document.getElementById('countyChart').getContext('2d');
+  countyChart = new Chart(ctxC,{
+    type:'bar',
+    data:{labels:['Pinellas','Hillsborough','Sarasota'],datasets:[{label:'Developments',data:[9,8,11],backgroundColor:['#d4a853','#3b82f6','#10b981'],borderRadius:6,barThickness:60}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:2,font:{family:'Inter'}},grid:{color:'rgba(0,0,0,0.05)'}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600'}}}}}
+  });
+  const ctxU = document.getElementById('unitMixChart').getContext('2d');
+  unitMixChart = new Chart(ctxU,{
+    type:'doughnut',
+    data:{labels:['1 BR (<10%)','2 BR (~60%)','3 BR (~25%)','PH / 4BR+ (~5%)'],datasets:[{data:[10,60,25,5],backgroundColor:['#6b7280','#d4a853','#1a1a2e','#10b981'],borderWidth:2,borderColor:'#fff'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{padding:16,font:{family:'Inter',size:12},usePointStyle:true,pointStyleWidth:10}}}}
+  });
+  const ctxA = document.getElementById('absorptionChart').getContext('2d');
+  absorptionChart = new Chart(ctxA,{
+    type:'bar',
+    data:{labels:['Waldorf Astoria (AES 1.15)','Lake House (AES 0.80)','Pipeline Avg (AES 0.65)'],datasets:[{label:'AES Score',data:[1.15,0.80,0.65],backgroundColor:['#d4a853','#3b82f6','#6b7280'],borderRadius:4,barThickness:28}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,max:1.5,ticks:{font:{family:'Inter'}},grid:{color:'rgba(0,0,0,0.05)'}},y:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:12}}}}}
+  });
+}
+function applyFilter(){
+  const val = document.getElementById('countyFilter').value;
+  if(val==='all'){
+    document.getElementById('kpiDevs').textContent='28';
+    document.getElementById('kpiValue').textContent='$2.1B+';
+    document.getElementById('kpiUnits').textContent='1,243';
+    document.getElementById('kpiPSF').textContent='$1,449';
+    document.querySelector('#kpiRow .kpi-card:nth-child(1) .kpi-sub').textContent='Across 3 counties';
+    countyChart.data.datasets[0].data=[9,8,11];
+    countyChart.data.labels=['Pinellas','Hillsborough','Sarasota'];
+    countyChart.data.datasets[0].backgroundColor=['#d4a853','#3b82f6','#10b981'];
+  } else {
+    const filtered = developments.filter(d=>d.county===val);
+    document.getElementById('kpiDevs').textContent=filtered.length;
+    document.getElementById('kpiValue').textContent= val==='pinellas'?'$2.1B+':'—';
+    document.getElementById('kpiUnits').textContent= val==='pinellas'?'1,243':'—';
+    document.getElementById('kpiPSF').textContent= val==='pinellas'?'$1,449':'—';
+    document.querySelector('#kpiRow .kpi-card:nth-child(1) .kpi-sub').textContent=countyNames[val]+' County';
+    countyChart.data.datasets[0].data=[filtered.length];
+    countyChart.data.labels=[countyNames[val]];
+    countyChart.data.datasets[0].backgroundColor=[countyColors[val]];
+  }
+  countyChart.update();
+}
+let sortDir = [1,1];
+function sortTable(col){
+  const table = document.getElementById('trendsTable');
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  sortDir[col] *= -1;
+  rows.sort((a,b)=>{
+    const aVal = a.cells[col].textContent.trim();
+    const bVal = b.cells[col].textContent.trim();
+    const aNum = parseFloat(aVal.replace(/[$,M%\u2014]/g,''));
+    const bNum = parseFloat(bVal.replace(/[$,M%\u2014]/g,''));
+    if(!isNaN(aNum)&&!isNaN(bNum)) return (aNum-bNum)*sortDir[col];
+    return aVal.localeCompare(bVal)*sortDir[col];
+  });
+  rows.forEach(r=>tbody.appendChild(r));
+  table.querySelectorAll('th').forEach((th,i)=>{th.classList.toggle('active',i===col);});
+}
+</script>
+</body>
+</html>

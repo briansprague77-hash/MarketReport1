@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tampa Bay New Construction Pipeline — Market Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+<style>
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal-950:#0a0a12;--charcoal-900:#141418;--charcoal-800:#1a1a2e;
+  --charcoal-700:#2a2a3e;--charcoal-600:#3a3a4e;--charcoal-500:#66666B;
+  --charcoal-400:#8a8a95;--charcoal-300:#a8a8b0;--charcoal-200:#ccccce;
+  --charcoal-100:#e5e5e7;--charcoal-50:#f0f0f2;
+  --gold-600:#b8942e;--gold-500:#C9A84C;--gold-400:#d4b86c;--gold-300:#e0ca8c;
+  --ivory-50:#faf8f5;--ivory-100:#f5f2ed;
+  --emerald-500:#0D9668;--emerald-400:#16A34A;
+  --blue-500:#3B82F6;--blue-600:#2563EB;
+  --pink-500:#EC4899;--purple-500:#8B5CF6;--purple-600:#7C3AED;
+  --amber-500:#F59E0B;--amber-600:#D97706;
+  --red-400:#F87171;--gray-400:#9CA3AF;--gray-500:#6B7280;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--charcoal-900);background:var(--ivory-50);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.2}
+a{color:var(--gold-600);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ─── Layout ───────────────────────────────────────────────── */
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+.section{padding:64px 0}
+.section-dark{background:var(--charcoal-900);color:#fff}
+.section-charcoal{background:var(--charcoal-950);color:#fff}
+.section-light{background:var(--ivory-50)}
+.section-white{background:#fff}
+
+/* ─── Navigation ───────────────────────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,18,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.5px}
+.nav-brand span{color:var(--gold-500)}
+.nav-tabs{display:flex;gap:4px}
+.nav-tab{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;border:none;background:transparent;color:var(--charcoal-400);letter-spacing:0.3px}
+.nav-tab:hover{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-tab.active{color:var(--gold-500);background:rgba(201,168,76,0.1)}
+.nav-meta{font-size:11px;color:var(--charcoal-500);letter-spacing:0.5px}
+
+/* ─── Hero ─────────────────────────────────────────────────── */
+.hero{padding:120px 0 80px;background:var(--charcoal-950);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 25%,rgba(201,168,76,0.08) 0%,transparent 50%),radial-gradient(circle at 75% 75%,rgba(201,168,76,0.05) 0%,transparent 50%)}
+.hero-content{position:relative;text-align:center;max-width:900px;margin:0 auto}
+.hero-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.3em;color:var(--gold-500);margin-bottom:16px}
+.hero h1{font-size:clamp(2.5rem,5vw,3.75rem);color:#fff;margin-bottom:20px}
+.hero-subtitle{font-size:18px;color:var(--charcoal-400);max-width:700px;margin:0 auto 32px;line-height:1.7}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:24px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:500}
+.pill-gold{border:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.1);color:var(--gold-400)}
+.pill-gray{border:1px solid var(--charcoal-700);background:rgba(42,42,62,0.5);color:var(--charcoal-300)}
+.pill-green{border:1px solid rgba(13,150,104,0.3);background:rgba(13,150,104,0.1);color:#34D399}
+.pill-blue{border:1px solid rgba(59,130,246,0.3);background:rgba(59,130,246,0.1);color:#60A5FA}
+.pill-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.hero-date{font-size:12px;color:var(--charcoal-500)}
+
+/* ─── Section Headers ──────────────────────────────────────── */
+.section-header{text-align:center;margin-bottom:48px}
+.section-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.25em;color:var(--gold-600);margin-bottom:10px}
+.section-eyebrow-light{color:var(--gold-400)}
+.section-title{font-size:clamp(1.75rem,3vw,2.25rem);margin-bottom:12px}
+.section-subtitle{font-size:16px;color:var(--charcoal-500);max-width:600px;margin:0 auto;line-height:1.6}
+.section-subtitle-light{color:var(--charcoal-400)}
+
+/* ─── Cards ────────────────────────────────────────────────── */
+.card{background:#fff;border-radius:16px;border:1px solid var(--charcoal-100);box-shadow:0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.03);overflow:hidden;transition:box-shadow .2s}
+.card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08),0 12px 36px rgba(0,0,0,0.06)}
+.card-dark{background:var(--charcoal-800);border-color:var(--charcoal-700)}
+
+/* ─── Metric Cards (Executive Dashboard) ───────────────────── */
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.metric-card{background:var(--charcoal-800);border-radius:16px;padding:24px;border:1px solid var(--charcoal-700);position:relative;overflow:hidden}
+.metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.metric-card[data-accent="gold"]::before{background:var(--gold-500)}
+.metric-card[data-accent="green"]::before{background:var(--emerald-500)}
+.metric-card[data-accent="blue"]::before{background:var(--blue-500)}
+.metric-card[data-accent="pink"]::before{background:var(--pink-500)}
+.metric-card[data-accent="purple"]::before{background:var(--purple-500)}
+.metric-card[data-accent="amber"]::before{background:var(--amber-500)}
+.metric-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+.metric-icon-gold{background:rgba(201,168,76,0.15);color:var(--gold-500)}
+.metric-icon-green{background:rgba(13,150,104,0.15);color:var(--emerald-500)}
+.metric-icon-blue{background:rgba(59,130,246,0.15);color:var(--blue-500)}
+.metric-icon-pink{background:rgba(236,72,153,0.15);color:var(--pink-500)}
+.metric-icon-purple{background:rgba(139,92,246,0.15);color:var(--purple-500)}
+.metric-icon-amber{background:rgba(245,158,11,0.15);color:var(--amber-500)}
+.metric-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--charcoal-400);margin-bottom:6px}
+.metric-value{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff}
+.metric-sub{font-size:12px;color:var(--charcoal-400);margin-top:6px}
+
+/* ─── Trend Cards ──────────────────────────────────────────── */
+.trends-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.trend-card{background:#fff;border-radius:12px;padding:24px;border:1px solid var(--charcoal-100);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.trend-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.trend-metric{font-size:14px;font-weight:600;color:var(--charcoal-900);line-height:1.4;padding-right:12px}
+.trend-dir{font-size:18px}
+.trend-value{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--charcoal-900)}
+.trend-change{font-size:13px;font-weight:700;margin-left:10px}
+.trend-change.up{color:var(--emerald-500)}
+.trend-change.down{color:var(--red-400)}
+.trend-change.stable{color:var(--charcoal-400)}
+.trend-range{font-size:12px;color:var(--charcoal-400);margin-top:4px;display:flex;align-items:center;gap:6px}
+.trend-footer{margin-top:12px;padding-top:12px;border-top:1px solid var(--charcoal-100);display:flex;justify-content:space-between;font-size:11px}
+.trend-period{color:var(--charcoal-400)}
+.trend-source{color:var(--gold-600);font-weight:500}
+
+/* ─── Chart Cards ──────────────────────────────────────────── */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.chart-card{background:#fff;border-radius:16px;padding:24px;border:1px solid var(--charcoal-100);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.chart-card.full-width{grid-column:1/-1}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--charcoal-900);margin-bottom:20px}
+.chart-container{position:relative;height:300px}
+
+/* ─── Development Cards ────────────────────────────────────── */
+.dev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.dev-card{background:#fff;border-radius:16px;border:1px solid var(--charcoal-100);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all .2s}
+.dev-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.dev-card-header{padding:20px 20px 0}
+.dev-card-body{padding:16px 20px 20px}
+.dev-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--charcoal-900);margin-bottom:4px}
+.dev-location{font-size:13px;color:var(--charcoal-500);margin-bottom:12px}
+.dev-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dev-stat{background:var(--ivory-50);border-radius:8px;padding:10px 12px}
+.dev-stat-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--charcoal-400);margin-bottom:2px}
+.dev-stat-value{font-size:15px;font-weight:700;color:var(--charcoal-900)}
+.dev-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.dev-tag{font-size:10px;font-weight:600;padding:4px 10px;border-radius:999px;letter-spacing:0.03em}
+
+/* Status badges */
+.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.03em}
+.badge-pre-sales{color:var(--gold-500);background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2)}
+.badge-pre-construction{color:var(--emerald-500);background:rgba(13,150,104,0.1);border:1px solid rgba(13,150,104,0.2)}
+.badge-under-construction{color:var(--blue-500);background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2)}
+.badge-delivering{color:var(--amber-600);background:rgba(255,152,0,0.1);border:1px solid rgba(255,152,0,0.2)}
+.badge-delivered{color:var(--gray-500);background:rgba(158,158,158,0.1);border:1px solid rgba(158,158,158,0.2)}
+.badge-reservation{color:var(--gold-500);background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2)}
+
+/* Tag badges */
+.tag-ultra{background:rgba(201,168,76,0.1);color:var(--gold-500);border:1px solid rgba(201,168,76,0.2)}
+.tag-tier1{background:rgba(201,168,76,0.08);color:var(--gold-600);border:1px solid rgba(201,168,76,0.15)}
+.tag-waterfront{background:rgba(33,150,243,0.08);color:var(--blue-500);border:1px solid rgba(33,150,243,0.15)}
+.tag-branded{background:rgba(123,31,162,0.08);color:#9C27B0;border:1px solid rgba(123,31,162,0.15)}
+.tag-str{background:rgba(255,152,0,0.08);color:var(--amber-600);border:1px solid rgba(255,152,0,0.15)}
+.tag-new{background:rgba(76,175,80,0.08);color:var(--emerald-400);border:1px solid rgba(76,175,80,0.15)}
+
+/* ─── County Group Headers ─────────────────────────────────── */
+.county-header{display:flex;align-items:center;gap:12px;margin:40px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--charcoal-100)}
+.county-header:first-child{margin-top:0}
+.county-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.county-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--charcoal-900)}
+.county-count{font-size:13px;color:var(--charcoal-500);margin-left:auto}
+
+/* ─── Demand Drivers ───────────────────────────────────────── */
+.drivers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.driver-card{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--charcoal-100);text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.driver-stat{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--gold-500);margin-bottom:8px}
+.driver-title{font-size:15px;font-weight:700;color:var(--charcoal-900);margin-bottom:8px}
+.driver-desc{font-size:13px;color:var(--charcoal-500);line-height:1.6}
+
+/* ─── Delivery Timeline ────────────────────────────────────── */
+.timeline-container{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.timeline-header{display:grid;grid-template-columns:200px repeat(8,1fr);background:var(--charcoal-950);border-radius:12px 12px 0 0;padding:12px 0}
+.timeline-year{text-align:center;font-size:12px;font-weight:600;color:var(--charcoal-300);letter-spacing:0.05em}
+.timeline-label-col{padding-left:16px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold-400)}
+.timeline-row{display:grid;grid-template-columns:200px repeat(8,1fr);border-bottom:1px solid var(--charcoal-100);min-height:44px;align-items:center}
+.timeline-row:nth-child(even){background:var(--ivory-50)}
+.timeline-dev-name{padding:8px 16px;font-size:13px;font-weight:600;color:var(--charcoal-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timeline-bar-area{grid-column:2/10;position:relative;height:28px;padding:0 4px}
+.timeline-bar{position:absolute;height:24px;border-radius:6px;top:2px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#fff;white-space:nowrap;min-width:60px;padding:0 8px}
+
+/* ─── Comparison Table ─────────────────────────────────────── */
+.comparison-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid var(--charcoal-100);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.comparison-table{width:100%;border-collapse:collapse;font-size:13px;min-width:1200px}
+.comparison-table th,.comparison-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--charcoal-100);white-space:nowrap}
+.comparison-table thead th{background:var(--charcoal-950);color:#fff;font-weight:600;font-size:12px;position:sticky;top:0;z-index:2}
+.comparison-table thead th:first-child{position:sticky;left:0;z-index:3;min-width:160px}
+.comparison-table tbody td:first-child{position:sticky;left:0;z-index:1;background:#fff;font-weight:600;color:var(--charcoal-700);font-size:12px;min-width:160px;border-right:1px solid var(--charcoal-100)}
+.comparison-table tbody tr:nth-child(even) td:first-child{background:var(--ivory-50)}
+.comparison-table tbody tr:nth-child(even){background:var(--ivory-50)}
+.comparison-cat{background:var(--charcoal-50)!important;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold-600);border-left:3px solid var(--gold-500)}
+.comparison-cat td{background:var(--charcoal-50)!important}
+.waldorf-col{background:rgba(201,168,76,0.05)!important}
+
+/* ─── Geographic Coverage ──────────────────────────────────── */
+.geo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:900px;margin:0 auto}
+.geo-card{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--charcoal-100)}
+.geo-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.geo-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.geo-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700}
+.geo-count{font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px}
+.geo-desc{font-size:13px;color:var(--charcoal-500);line-height:1.6;margin-bottom:16px}
+.geo-submarkets{display:flex;flex-wrap:wrap;gap:6px}
+.geo-submarket{font-size:10px;font-weight:600;padding:5px 12px;border-radius:999px}
+
+/* ─── Methodology ──────────────────────────────────────────── */
+.meth-sources{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:24px}
+.meth-source{background:var(--charcoal-800);border-radius:12px;padding:20px;border:1px solid var(--charcoal-700)}
+.meth-source-name{font-size:13px;font-weight:700;color:var(--gold-400);margin-bottom:6px}
+.meth-source-desc{font-size:12px;color:var(--charcoal-400);line-height:1.5}
+
+/* ─── Absorption / Velocity ────────────────────────────────── */
+.velocity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.velocity-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--charcoal-100);text-align:center}
+.velocity-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--charcoal-400);margin-bottom:8px}
+.velocity-value{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--charcoal-900)}
+.velocity-sub{font-size:12px;color:var(--charcoal-500);margin-top:4px}
+
+/* ─── Footer ───────────────────────────────────────────────── */
+.footer{background:var(--charcoal-950);padding:40px 0;text-align:center;border-top:1px solid rgba(201,168,76,0.1)}
+.footer-brand{font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
+.footer-brand span{color:var(--gold-500)}
+.footer-meta{font-size:12px;color:var(--charcoal-500);line-height:1.8}
+.footer-disclaimer{font-size:11px;color:var(--charcoal-600);max-width:700px;margin:16px auto 0;line-height:1.6}
+
+/* ─── Tabs Section Switch ──────────────────────────────────── */
+.page-section{display:none}
+.page-section.active{display:block}
+
+/* ─── Scroll nav offset ───────────────────────────────────── */
+[id]{scroll-margin-top:80px}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media(max-width:768px){
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .charts-grid{grid-template-columns:1fr}
+  .trends-grid{grid-template-columns:1fr}
+  .dev-grid{grid-template-columns:1fr}
+  .drivers-grid{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:2rem}
+  .nav-meta{display:none}
+}
+@media(max-width:480px){
+  .metrics-grid{grid-template-columns:1fr}
+  .drivers-grid{grid-template-columns:1fr}
+}
+
+/* ─── Unit Mix Bar ─────────────────────────────────────────── */
+.unit-mix{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.unit-mix-item{background:var(--ivory-50);border-radius:10px;padding:12px 18px;text-align:center;min-width:120px;border:1px solid var(--charcoal-100)}
+.unit-mix-label{font-size:11px;font-weight:600;color:var(--charcoal-400);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
+.unit-mix-value{font-size:20px;font-weight:700;color:var(--charcoal-900)}
+.unit-mix-note{font-size:10px;color:var(--charcoal-500);margin-top:2px}
+
+/* ─── Author ───────────────────────────────────────────────── */
+.author-card{display:flex;gap:24px;align-items:center;background:var(--charcoal-800);border-radius:16px;padding:32px;border:1px solid var(--charcoal-700);max-width:700px;margin:0 auto}
+.author-avatar{width:80px;height:80px;border-radius:50%;background:var(--gold-500);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--charcoal-950);flex-shrink:0}
+.author-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:4px}
+.author-title{font-size:13px;color:var(--gold-400);margin-bottom:8px}
+.author-bio{font-size:13px;color:var(--charcoal-400);line-height:1.6}
+
+/* ─── Insight Key Legend ──────────────────────────────────── */
+.legend-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.legend-group h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--charcoal-500);margin-bottom:12px}
+.legend-item{display:flex;align-items:center;gap:10px;padding:6px 0}
+.legend-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap}
+.legend-desc{font-size:12px;color:var(--charcoal-500);line-height:1.4}
+@media(max-width:768px){.legend-grid{grid-template-columns:1fr}}
+
+/* ─── Market Insights ─────────────────────────────────────── */
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+.insight-card{background:#fff;border-radius:14px;padding:24px;border:1px solid var(--charcoal-100);transition:box-shadow 0.2s}
+.insight-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.insight-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+.insight-card h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--charcoal-900);margin-bottom:8px}
+.insight-card p{font-size:13px;color:var(--charcoal-500);line-height:1.6}
+
+/* ─── Disclaimers ─────────────────────────────────────────── */
+.disclaimers-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin:0 auto}
+.disclaimer-card{background:rgba(20,20,24,0.6);border:1px solid var(--charcoal-700);border-radius:14px;padding:24px;display:flex;gap:16px;align-items:flex-start}
+.disclaimer-icon{width:36px;height:36px;border-radius:10px;background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.disclaimer-card h3{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
+.disclaimer-card p{font-size:12px;color:var(--charcoal-400);line-height:1.55}
+@media(max-width:768px){.disclaimers-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ─── Navigation ──────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-brand">Historic<span>StPete</span></div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="switchPage('home')">Home</button>
+      <button class="nav-tab" onclick="switchPage('report')">Market Report</button>
+    </div>
+    <div class="nav-meta">Data as of 2026-02-20</div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- HOMEPAGE                                                     -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div id="page-home" class="page-section active">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Tampa Bay New Construction Intelligence</div>
+    <h1>The Market Report Your Buyers Deserve</h1>
+    <p class="hero-subtitle">No spin. No luxury lifestyle filler. Just sourced data on every new construction condo in the Tampa Bay pipeline — pre-sales through delivered.</p>
+    <div class="hero-pills">
+      <span class="pill pill-gold"><span class="pill-dot" style="background:var(--gold-500)"></span>28 Developments</span>
+      <span class="pill pill-green"><span class="pill-dot" style="background:var(--emerald-500)"></span>$2.1B+ Pipeline</span>
+      <span class="pill pill-gray"><span class="pill-dot" style="background:var(--charcoal-500)"></span>3 Counties</span>
+      <span class="pill pill-blue"><span class="pill-dot" style="background:var(--blue-500)"></span>$1,449 Avg PSF</span>
+    </div>
+    <p class="hero-date">Built by a broker who got tired of sending clients marketing flyers instead of real data.</p>
+  </div>
+</section>
+
+<!-- Pinellas Developments -->
+<section class="section section-light" id="pinellas-devs">
+  <div class="container">
+    <div class="county-header" style="margin-top:0">
+      <span class="county-dot" style="background:var(--gold-500)"></span>
+      <span class="county-name">Pinellas County</span>
+      <span class="county-count">9 developments · Full analytical coverage</span>
+    </div>
+    <div class="dev-grid" id="pinellas-grid"></div>
+
+    <div class="county-header">
+      <span class="county-dot" style="background:var(--charcoal-500)"></span>
+      <span class="county-name">Hillsborough County</span>
+      <span class="county-count">8 developments · Pipeline tracking</span>
+    </div>
+    <div class="dev-grid" id="hillsborough-grid"></div>
+
+    <div class="county-header">
+      <span class="county-dot" style="background:var(--emerald-500)"></span>
+      <span class="county-name">Sarasota County</span>
+      <span class="county-count">11 developments · Pipeline tracking</span>
+    </div>
+    <div class="dev-grid" id="sarasota-grid"></div>
+  </div>
+</section>
+
+<!-- Market Snapshot -->
+<section class="section section-charcoal">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow section-eyebrow-light">Market Snapshot</div>
+      <h2 class="section-title" style="color:#fff">Pipeline at a Glance</h2>
+    </div>
+    <div class="velocity-grid" style="max-width:900px;margin:0 auto">
+      <div class="velocity-card" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+        <div class="velocity-label" style="color:var(--gold-400)">Absorption Rate</div>
+        <div class="velocity-value" style="color:#fff">~16</div>
+        <div class="velocity-sub" style="color:var(--charcoal-400)">contracts/month (Pinellas)</div>
+      </div>
+      <div class="velocity-card" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+        <div class="velocity-label" style="color:var(--gold-400)">Waldorf AES</div>
+        <div class="velocity-value" style="color:#fff">1.15</div>
+        <div class="velocity-sub" style="color:var(--charcoal-400)">24–28 mo sell-through</div>
+      </div>
+      <div class="velocity-card" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+        <div class="velocity-label" style="color:var(--gold-400)">Pipeline Avg AES</div>
+        <div class="velocity-value" style="color:#fff">0.65</div>
+        <div class="velocity-sub" style="color:var(--charcoal-400)">42–48 mo pipeline average</div>
+      </div>
+      <div class="velocity-card" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+        <div class="velocity-label" style="color:var(--gold-400)">Lake House AES</div>
+        <div class="velocity-value" style="color:#fff">0.80</div>
+        <div class="velocity-sub" style="color:var(--charcoal-400)">36–40 mo projected</div>
+      </div>
+    </div>
+    <!-- Unit Mix -->
+    <div style="margin-top:40px">
+      <h3 style="text-align:center;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:var(--gold-400);margin-bottom:20px">Unit Mix Composition</h3>
+      <div class="unit-mix">
+        <div class="unit-mix-item" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+          <div class="unit-mix-label" style="color:var(--charcoal-400)">1 BR</div>
+          <div class="unit-mix-value" style="color:#fff">&lt;10%</div>
+          <div class="unit-mix-note" style="color:var(--charcoal-500)">Limited supply</div>
+        </div>
+        <div class="unit-mix-item" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+          <div class="unit-mix-label" style="color:var(--charcoal-400)">2 BR</div>
+          <div class="unit-mix-value" style="color:#fff">~60%</div>
+          <div class="unit-mix-note" style="color:var(--charcoal-500)">Core demand</div>
+        </div>
+        <div class="unit-mix-item" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+          <div class="unit-mix-label" style="color:var(--charcoal-400)">3 BR</div>
+          <div class="unit-mix-value" style="color:#fff">~25%</div>
+          <div class="unit-mix-note" style="color:var(--charcoal-500)">Family / 2nd home</div>
+        </div>
+        <div class="unit-mix-item" style="background:var(--charcoal-800);border-color:var(--charcoal-700)">
+          <div class="unit-mix-label" style="color:var(--charcoal-400)">PH / 4 BR+</div>
+          <div class="unit-mix-value" style="color:#fff">~5%</div>
+          <div class="unit-mix-note" style="color:var(--charcoal-500)">Ultra-luxury</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Author -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="author-card">
+      <div class="author-avatar">BS</div>
+      <div>
+        <div class="author-name">Brian Sprague</div>
+        <div class="author-title">Market Analyst & Licensed Realtor · Tampa Bay Real Estate</div>
+        <div class="author-bio">Specializing in new development sales across the Tampa Bay metro. Every data point is sourced, every claim is cited. 10+ years Tampa Bay market experience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-home -->
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- MARKET REPORT                                                -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div id="page-report" class="page-section">
+
+<!-- Report Hero -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Tampa Bay New Construction Intelligence</div>
+    <h1>Market Report</h1>
+    <p class="hero-subtitle">28 developments tracked across 7 submarkets. Real-time pipeline analytics, pricing trends, and delivery timelines for listing advisors.</p>
+    <div class="hero-pills">
+      <span class="pill pill-gold"><span class="pill-dot" style="background:var(--gold-500)"></span>9 Pinellas</span>
+      <span class="pill pill-gray"><span class="pill-dot" style="background:var(--charcoal-500)"></span>8 Hillsborough</span>
+      <span class="pill pill-blue"><span class="pill-dot" style="background:var(--blue-500)"></span>11 Sarasota</span>
+      <span class="pill pill-green"><span class="pill-dot" style="background:var(--emerald-500)"></span>$2.1B+ Pipeline</span>
+    </div>
+    <p class="hero-date">Data as of 2026-02-20</p>
+  </div>
+</section>
+
+<!-- Executive Dashboard -->
+<section class="section section-charcoal" id="exec-dash">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow section-eyebrow-light">Executive Summary</div>
+      <h2 class="section-title" style="color:#fff">Pipeline Dashboard</h2>
+    </div>
+    <div class="metrics-grid" id="metrics-grid"></div>
+  </div>
+</section>
+
+<!-- Market Trends -->
+<section class="section section-light" id="trends">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Year-Over-Year</div>
+      <h2 class="section-title">Market Trends</h2>
+      <p class="section-subtitle">Key performance metrics with source attribution</p>
+    </div>
+    <div class="trends-grid" id="trends-grid"></div>
+  </div>
+</section>
+
+<!-- Market Charts -->
+<section class="section section-light" id="charts">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Data Visualizations</div>
+      <h2 class="section-title">Market Analytics</h2>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Inventory by Status</div>
+        <div class="chart-container"><canvas id="chart-status"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Units by Developer</div>
+        <div class="chart-container"><canvas id="chart-developer"></canvas></div>
+      </div>
+      <div class="chart-card full-width">
+        <div class="chart-title">Price Per Square Foot — Pinellas New Construction</div>
+        <div class="chart-container"><canvas id="chart-psf"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Demand Drivers -->
+<section class="section section-white" id="drivers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Why Tampa Bay</div>
+      <h2 class="section-title">Demand Drivers</h2>
+    </div>
+    <div class="drivers-grid" id="drivers-grid"></div>
+  </div>
+</section>
+
+<!-- Delivery Timeline -->
+<section class="section section-light" id="timeline">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Construction Pipeline</div>
+      <h2 class="section-title">Delivery Timeline</h2>
+      <p class="section-subtitle">Pinellas County new construction delivery schedule</p>
+    </div>
+    <div id="timeline-container"></div>
+  </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="section section-white" id="comparison">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Side-by-Side</div>
+      <h2 class="section-title">Development Comparison</h2>
+      <p class="section-subtitle">All tracked developments with pricing, specs, and policies</p>
+    </div>
+    <div class="comparison-wrapper" id="comparison-wrapper"></div>
+    <p style="margin-top:12px;font-size:11px;color:var(--charcoal-400);text-align:center">Sources: Stellar MLS, developer disclosures, proprietary broker research. Pricing subject to change.</p>
+  </div>
+</section>
+
+<!-- Insight Key Legend -->
+<section class="section section-white" id="legend">
+  <div class="container">
+    <div style="max-width:720px;margin:0 auto">
+      <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--charcoal-500);margin-bottom:24px">How to Read This Report</h3>
+      <div class="legend-grid" id="legend-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Market Insights -->
+<section class="section section-light" id="insights">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" style="color:var(--charcoal-400)">Analysis</div>
+      <h2 class="section-title">Market Insights</h2>
+      <p class="section-subtitle">Key observations from the current pipeline data</p>
+    </div>
+    <div class="insights-grid" id="insights-grid"></div>
+  </div>
+</section>
+
+<!-- Geographic Coverage -->
+<section class="section section-light" id="geography">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" style="color:var(--charcoal-400)">Report Scope</div>
+      <h2 class="section-title">Geographic Coverage</h2>
+      <p class="section-subtitle">This report tracks 28 new construction condominium developments across three counties in the Tampa Bay metropolitan area.</p>
+    </div>
+    <div class="geo-grid" id="geo-grid"></div>
+    <p style="margin-top:32px;font-size:12px;color:var(--charcoal-400);text-align:center">Coverage is expanding. Additional counties and submarkets will be added as developer disclosures become available.</p>
+  </div>
+</section>
+
+<!-- Disclaimers & Disclosures -->
+<section class="section section-dark" id="disclaimers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow section-eyebrow-light">Important Notices</div>
+      <h2 class="section-title" style="color:#fff">Disclaimers & Disclosures</h2>
+    </div>
+    <div class="disclaimers-grid" id="disclaimers-grid"></div>
+    <p style="margin-top:24px;font-size:10px;color:var(--charcoal-600);text-align:center;max-width:720px;margin-left:auto;margin-right:auto;line-height:1.6">Data as of February 2026. Broker cooperation and commission rates are set by individual developers and are subject to change. Always confirm current terms directly with each project&rsquo;s sales office before advising clients.</p>
+  </div>
+</section>
+
+<!-- Methodology -->
+<section class="section section-dark" id="methodology">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow section-eyebrow-light">Transparency</div>
+      <h2 class="section-title" style="color:#fff">Methodology & Sources</h2>
+      <p class="section-subtitle section-subtitle-light" style="max-width:800px">This report is independently produced and is not sponsored, endorsed, or financially supported by any developer, brokerage, or project featured herein.</p>
+    </div>
+    <div class="meth-sources" id="meth-sources"></div>
+  </div>
+</section>
+
+</div><!-- /page-report -->
+
+<!-- ─── Footer ──────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">Historic<span>StPete</span> · Tampa Bay New Construction Intelligence</div>
+    <div class="footer-meta">Brian Sprague · Market Analyst & Licensed Realtor · Tampa Bay Real Estate</div>
+    <div class="footer-disclaimer">Data is compiled for informational purposes only and does not constitute a solicitation, offering, or investment advice. All figures should be independently verified before making purchase decisions. Market conditions are subject to change.</div>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════════════
+
+const DEVELOPMENTS = [
+  // ── Pinellas ───────────────────────────────────────────────
+  {slug:'waldorf-astoria',name:'Waldorf Astoria Residences',location:'Downtown St. Petersburg',county:'pinellas',status:'delivering',statusLabel:'Delivering',units:163,soldPercent:20.2,avgPsf:1449,delivery:'Q4 2030',hasPage:true,price:'$2.6M – $7.5M+',bedrooms:'2–4 BR',sqft:'2,211 – 4,980 SF',type:'Condominium',tags:['Ultra Luxury','Tier 1 Premium','Waterfront','Branded Residence'],developer:'PMG & Feldman Equities',architect:'Arquitectonica',stories:50,address:'100 1st Ave NE, St. Petersburg, FL',brokerCommission:'3% co-op',rentalPolicy:'1-year min after closing'},
+  {slug:'art-house',name:'Art House St. Petersburg',location:'Downtown St. Petersburg',county:'pinellas',status:'delivered',statusLabel:'Delivered',units:244,soldPercent:12.3,avgPsf:940,delivery:'Q2 2027',hasPage:true,price:'$1.359M – $4.599M',bedrooms:'2–4 BR',sqft:'1,339 – 3,989 SF',type:'Condominium',tags:['Tier 1 Premium'],developer:'Kolter Urban',architect:'Arquitectonica',stories:42,address:'330 Beach Dr NE, St. Petersburg, FL',brokerCommission:'3% co-op',rentalPolicy:'6-month min'},
+  {slug:'400-central',name:'Residences at 400 Central',location:'Downtown St. Petersburg',county:'pinellas',status:'delivering',statusLabel:'Delivering',units:301,delivery:'Available Now',hasPage:true,price:'$525K+',bedrooms:'3–4 BR',sqft:'750 – 1,850 SF',type:'Condominium',tags:[],developer:'Red Apple',stories:12,address:'400 Central Ave, St. Petersburg, FL',brokerCommission:'3% co-op',rentalPolicy:'30-day min'},
+  {slug:'the-cade',name:'The Cade',location:'Downtown St. Petersburg',county:'pinellas',status:'pre-sales',statusLabel:'Pre-Sales',units:15,delivery:'Q3 2026',hasPage:true,price:'$875K+',bedrooms:'3–5 BR',sqft:'850 – 1,950 SF',type:'Condominium',tags:[],developer:'Backstreets Capital',stories:7,address:'175 Central Ave, St. Petersburg, FL',brokerCommission:'3% co-op'},
+  {slug:'roche-bobois',name:'Roche Bobois Maison',location:'Downtown St. Petersburg',county:'pinellas',status:'pre-construction',statusLabel:'Pre-Construction',units:165,delivery:'Q1 2027',hasPage:true,price:'$1.5M+',bedrooms:'2–4 BR',sqft:'1,100 – 2,800 SF',type:'Condominium',tags:['Branded Residence'],developer:'VALOR Capital',stories:34,address:'TBD, St. Petersburg, FL'},
+  {slug:'reflection',name:'Reflection St. Petersburg',location:'Downtown St. Petersburg',county:'pinellas',status:'under-construction',statusLabel:'Under Construction',units:88,delivery:'Available Now',hasPage:true,price:'$450K+',bedrooms:'1–3 BR',sqft:'1,000 – 2,200 SF',type:'Condominium',tags:[],developer:'HP Capital',stories:24,address:'199 Dali Blvd, St. Petersburg, FL',brokerCommission:'3% co-op',rentalPolicy:'30-day min'},
+  {slug:'corey-landings',name:'Corey Landings',location:'St. Pete Beach',county:'pinellas',status:'pre-sales',statusLabel:'Pre-Sales',units:133,delivery:'TBD',hasPage:true,price:'TBD',bedrooms:'2–3 BR',sqft:'1,400 – 3,200 SF',type:'Condominium',tags:['Waterfront','Branded Residence'],developer:'Kolter Urban',stories:3,address:'Corey Ave, St. Pete Beach, FL'},
+  {slug:'viceroy-clearwater',name:'Viceroy Residences Clearwater',location:'Clearwater Beach',county:'pinellas',status:'pre-sales',statusLabel:'Pre-Sales',units:86,delivery:'Q2 2029',hasPage:true,price:'$1.8M+',bedrooms:'2–4 BR',sqft:'1,100 – 2,600 SF',type:'Condominium',tags:['Branded Residence','Short-Term Rental'],developer:'Viceroy Hotel Group',stories:15,address:'Clearwater Beach, FL'},
+  {slug:'lake-house',name:'Lake House St. Petersburg',location:'Downtown St. Petersburg',county:'pinellas',status:'pre-sales',statusLabel:'Pre-Sales',units:45,delivery:'TBD',hasPage:false,price:'TBD',bedrooms:'1–3 BR + PH',type:'Condominium',tags:['New to Market'],developer:'TBD',address:'Mirror Lake, St. Petersburg, FL'},
+  // ── Hillsborough ───────────────────────────────────────────
+  {slug:'pendry-tampa',name:'Pendry Residences Tampa',location:'Downtown Tampa / Riverwalk',county:'hillsborough',status:'pre-sales',statusLabel:'Pre-Sales',units:200,delivery:'TBD',hasPage:false,type:'Condominium',tags:['Branded Residence','Waterfront'],developer:'Related Group & Merrimac Ventures'},
+  {slug:'one-tampa',name:'ONE Tampa',location:'Downtown Tampa',county:'hillsborough',status:'pre-sales',statusLabel:'Pre-Sales',units:0,delivery:'TBD',hasPage:false,type:'Condominium',tags:['Tier 1 Premium']},
+  {slug:'tampa-edition',name:'Tampa EDITION Residences',location:'Water Street Tampa',county:'hillsborough',status:'pre-sales',statusLabel:'Pre-Sales',units:0,delivery:'TBD',hasPage:false,type:'Condominium',tags:['Branded Residence','Tier 1 Premium'],developer:'Strategic Property Partners'},
+  {slug:'hotel-ora',name:'Hotel ORA + Private Residences',location:'Near Water Street Tampa',county:'hillsborough',status:'pre-sales',statusLabel:'Pre-Sales',units:0,delivery:'TBD',hasPage:false,type:'Condominium',tags:['Branded Residence','Short-Term Rental']},
+  {slug:'ritz-carlton-tower-ii',name:'Ritz-Carlton Tower II',location:'South Tampa',county:'hillsborough',status:'under-construction',statusLabel:'Under Construction',units:0,delivery:'TBD',hasPage:false,type:'Condominium',tags:['Ultra Luxury','Branded Residence','Waterfront'],developer:'Ritz-Carlton / Marriott'},
+  {slug:'altura-bayshore',name:'Altura Bayshore',location:'Bayshore Boulevard',county:'hillsborough',status:'delivered',statusLabel:'Delivered',units:0,delivery:'Delivered',hasPage:false,type:'Condominium',tags:['Waterfront','Tier 1 Premium']},
+  {slug:'aqua-westshore',name:'Aqua at Westshore Yacht Club',location:'Westshore',county:'hillsborough',status:'under-construction',statusLabel:'Under Construction',units:77,delivery:'2026',hasPage:false,type:'Condominium',tags:['Waterfront']},
+  {slug:'marina-pointe-luna',name:'Marina Pointe Luna',location:'Westshore Marina District',county:'hillsborough',status:'pre-sales',statusLabel:'Pre-Sales',units:0,delivery:'TBD',hasPage:false,type:'Condominium',tags:['Waterfront','New to Market']},
+  // ── Sarasota ───────────────────────────────────────────────
+  {slug:'one-park-sarasota',name:'One Park Sarasota',location:'The Quay',county:'sarasota',status:'under-construction',statusLabel:'Under Construction',units:0,delivery:'Q1-Q2 2027',hasPage:false,type:'Condominium',tags:['Tier 1 Premium','Waterfront'],developer:'PMG / MoneyShow'},
+  {slug:'ritz-carlton-sarasota',name:'Ritz-Carlton Sarasota Bay',location:'The Quay',county:'sarasota',status:'under-construction',statusLabel:'Under Construction',units:78,delivery:'Early 2026',hasPage:false,type:'Condominium',tags:['Ultra Luxury','Branded Residence','Waterfront'],developer:'Kolter Urban',stories:20},
+  {slug:'the-edge',name:'The Edge Sarasota',location:'Downtown Sarasota',county:'sarasota',status:'under-construction',statusLabel:'Under Construction',units:27,delivery:'Mid-2026',hasPage:false,type:'Condominium',tags:['Tier 1 Premium'],stories:10},
+  {slug:'waldorf-sarasota',name:'Waldorf Astoria Sarasota',location:'Downtown Sarasota',county:'sarasota',status:'pre-sales',statusLabel:'Pre-Sales',units:86,delivery:'~2029',hasPage:false,type:'Condominium',tags:['Ultra Luxury','Branded Residence'],stories:18},
+  {slug:'sota-residences',name:'SOTA Residences',location:'Main Street, Downtown Sarasota',county:'sarasota',status:'under-construction',statusLabel:'Under Construction',units:35,delivery:'2026',hasPage:false,type:'Condominium',tags:['Branded Residence'],stories:16},
+  {slug:'six88',name:'SIX88 Residences',location:'Golden Gate Point',county:'sarasota',status:'delivering',statusLabel:'Delivering',units:10,delivery:'Late 2025',hasPage:false,type:'Condominium',tags:['Ultra Luxury','Waterfront'],stories:9},
+  {slug:'mira-mar',name:'Mira Mar',location:'Downtown Sarasota',county:'sarasota',status:'pre-construction',statusLabel:'Pre-Construction',units:167,delivery:'TBD',hasPage:false,type:'Condominium',tags:['New to Market']},
+  {slug:'adagio',name:'Adagio Sarasota',location:'Downtown Sarasota',county:'sarasota',status:'pre-construction',statusLabel:'Pre-Construction',units:0,delivery:'TBD',hasPage:false,type:'Condominium',tags:['New to Market'],stories:18},
+  {slug:'high-line',name:'The High Line Sarasota',location:'Main & Osprey',county:'sarasota',status:'pre-construction',statusLabel:'Pre-Construction',units:142,delivery:'TBD',hasPage:false,type:'Condominium',tags:['New to Market']},
+  {slug:'palm-625',name:'The Palm 625',location:'Downtown Sarasota',county:'sarasota',status:'pre-construction',statusLabel:'Pre-Construction',units:12,delivery:'TBD',hasPage:false,type:'Condominium',tags:['Tier 1 Premium']},
+  {slug:'peninsula',name:'Peninsula Sarasota',location:'Downtown Sarasota',county:'sarasota',status:'pre-sales',statusLabel:'Pre-Sales',units:0,delivery:'TBD',hasPage:false,type:'Condominium',developer:'Gault Family Companies'},
+];
+
+const METRICS = [
+  {label:'Total Pinellas Units',value:'1,240',sub:'Active pipeline',icon:'🏗️',accent:'gold'},
+  {label:'Avg Price / SF',value:'$1,449',sub:'Waldorf Astoria (Stellar MLS)',icon:'📊',accent:'green'},
+  {label:'Pipeline Value',value:'$2.1B+',sub:'Pinellas new construction',icon:'💰',accent:'blue'},
+  {label:'PSF Growth',value:'+12.7%',sub:'YoY luxury tier',icon:'📈',accent:'pink'},
+  {label:'Near-Term Delivery',value:'545',sub:'Units by Q1 2026',icon:'🏠',accent:'purple'},
+  {label:'Inventory Change',value:'-34%',sub:'Resale YoY (Pinellas)',icon:'📉',accent:'amber'},
+];
+
+const TRENDS = [
+  {metric:'Waldorf Astoria Avg LP/SqFt',current:'$1,449',prior:'N/A',change:'New listing',direction:'up',period:'Feb 2026',source:'Stellar MLS'},
+  {metric:'Waldorf Astoria Avg List Price',current:'$3.69M',prior:'N/A',change:'6 active',direction:'up',period:'Feb 2026',source:'Stellar MLS'},
+  {metric:'Waldorf Astoria Avg Days on Market',current:'100',prior:'N/A',change:'Median 113',direction:'stable',period:'Feb 2026',source:'Stellar MLS'},
+  {metric:'Waldorf LP/SqFt Range',current:'$1,255–$1,879',prior:'N/A',change:'$624 spread',direction:'up',period:'Feb 2026',source:'Stellar MLS'},
+  {metric:'Waldorf Active Listings',current:'6',prior:'0',change:'+6 units',direction:'up',period:'Jan–Feb 2026',source:'Stellar MLS'},
+  {metric:'Waldorf Cancelled/Contracted',current:'3',prior:'0',change:'+3 units',direction:'up',period:'Jan–Feb 2026',source:'Stellar MLS'},
+];
+
+const DRIVERS = [
+  {stat:'0%',title:'No State Income Tax',desc:'Florida has no personal income tax, driving high-net-worth migration from the Northeast and California.'},
+  {stat:'3+',title:'Branded Residences',desc:'Waldorf Astoria, Roche Bobois, and Viceroy establish Tampa Bay as a branded-residence destination.'},
+  {stat:'$1,449',title:'Pre-Construction PSF',desc:'Waldorf Astoria active listings average $1,449/SF (Stellar MLS, Feb 2026), anchoring the luxury tier.'},
+  {stat:'6',title:'Limited Luxury Supply',desc:'Only 6 active Waldorf MLS listings across 163 planned units. Pre-construction scarcity supports pricing.'},
+];
+
+const SOURCES = [
+  {name:'MLS (Stellar MLS)',desc:'Active listings, pending sales, and closed transactions updated weekly.'},
+  {name:'Developer Disclosures',desc:'Official price sheets, sales reports, and project updates from development teams.'},
+  {name:'County Property Appraiser',desc:'Official closing prices, deed transfers, and assessment data.'},
+  {name:'Proprietary Broker Research',desc:'First-hand insights from active listing and buyer agent relationships.'},
+  {name:'Sales Gallery Visits',desc:'In-person visits to on-site sales galleries and model residences.'},
+  {name:'Personal Industry Network',desc:'Established relationships with developers, listing agents, and buyer agents.'},
+  {name:'Developer Websites',desc:'Official project websites, digital brochures, floor plan libraries.'},
+  {name:'Pinellas County Government',desc:'Building permits, zoning approvals, site plans, and development orders.'},
+  {name:'DBPR',desc:'Florida condominium filings, prospectus documents, and HOA registrations.'},
+  {name:'Trusted News Sources',desc:'Tampa Bay Times, Tampa Bay Business Journal, The Real Deal, Bloomberg.'},
+];
+
+// ════════════════════════════════════════════════════════════════
+// RENDERING HELPERS
+// ════════════════════════════════════════════════════════════════
+
+function badgeClass(status) {
+  const map = {'pre-sales':'badge-pre-sales','pre-construction':'badge-pre-construction','under-construction':'badge-under-construction','delivering':'badge-delivering','delivered':'badge-delivered','reservation':'badge-reservation','contract':'badge-pre-construction'};
+  return map[status] || 'badge-pre-sales';
+}
+function tagClass(tag) {
+  const t = tag.toLowerCase();
+  if (t.includes('ultra')) return 'tag-ultra';
+  if (t.includes('tier')) return 'tag-tier1';
+  if (t.includes('waterfront')) return 'tag-waterfront';
+  if (t.includes('branded')) return 'tag-branded';
+  if (t.includes('short')) return 'tag-str';
+  if (t.includes('new')) return 'tag-new';
+  return 'tag-tier1';
+}
+function dirIcon(d) { return d==='up'?'↑':d==='down'?'↓':'→'; }
+
+// ════════════════════════════════════════════════════════════════
+// BUILD SECTIONS
+// ════════════════════════════════════════════════════════════════
+
+// Development Cards
+function renderDevCards() {
+  ['pinellas','hillsborough','sarasota'].forEach(county => {
+    const grid = document.getElementById(county + '-grid');
+    const devs = DEVELOPMENTS.filter(d => d.county === county);
+    grid.innerHTML = devs.map(d => `
+      <div class="dev-card">
+        <div class="dev-card-header">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span class="badge ${badgeClass(d.status)}">${d.statusLabel}</span>
+            ${d.soldPercent ? `<span style="font-size:12px;font-weight:700;color:var(--emerald-500)">${d.soldPercent}% sold</span>` : ''}
+          </div>
+          <div class="dev-name">${d.name}</div>
+          <div class="dev-location">📍 ${d.location}</div>
+        </div>
+        <div class="dev-card-body">
+          <div class="dev-stats">
+            <div class="dev-stat">
+              <div class="dev-stat-label">Units</div>
+              <div class="dev-stat-value">${d.units || 'TBD'}</div>
+            </div>
+            <div class="dev-stat">
+              <div class="dev-stat-label">Delivery</div>
+              <div class="dev-stat-value" style="font-size:13px">${d.delivery}</div>
+            </div>
+            ${d.avgPsf ? `<div class="dev-stat"><div class="dev-stat-label">Avg PSF</div><div class="dev-stat-value">$${d.avgPsf.toLocaleString()}</div></div>` : ''}
+            ${d.price ? `<div class="dev-stat"><div class="dev-stat-label">Price Range</div><div class="dev-stat-value" style="font-size:12px">${d.price}</div></div>` : ''}
+          </div>
+          ${d.tags && d.tags.length ? `<div class="dev-tags">${d.tags.map(t => `<span class="dev-tag ${tagClass(t)}">${t}</span>`).join('')}</div>` : ''}
+          ${d.developer ? `<div style="margin-top:10px;font-size:11px;color:var(--charcoal-400)">Developer: ${d.developer}</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+  });
+}
+
+// Metrics
+function renderMetrics() {
+  document.getElementById('metrics-grid').innerHTML = METRICS.map(m => `
+    <div class="metric-card" data-accent="${m.accent}">
+      <div class="metric-icon metric-icon-${m.accent}">${m.icon}</div>
+      <div class="metric-label">${m.label}</div>
+      <div class="metric-value">${m.value}</div>
+      <div class="metric-sub">${m.sub}</div>
+    </div>
+  `).join('');
+}
+
+// Trends
+function renderTrends() {
+  document.getElementById('trends-grid').innerHTML = TRENDS.map(t => `
+    <div class="trend-card">
+      <div class="trend-header">
+        <div class="trend-metric">${t.metric}</div>
+        <span class="trend-dir">${dirIcon(t.direction)}</span>
+      </div>
+      <div style="display:flex;align-items:end;gap:8px;margin-bottom:8px">
+        <span class="trend-value">${t.current}</span>
+        <span class="trend-change ${t.direction}">${t.change}</span>
+      </div>
+      <div class="trend-range"><span>${t.prior}</span> → <span>${t.current}</span></div>
+      <div class="trend-footer">
+        <span class="trend-period">${t.period}</span>
+        ${t.source ? `<span class="trend-source">${t.source}</span>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+// Drivers
+function renderDrivers() {
+  document.getElementById('drivers-grid').innerHTML = DRIVERS.map(d => `
+    <div class="driver-card">
+      <div class="driver-stat">${d.stat}</div>
+      <div class="driver-title">${d.title}</div>
+      <div class="driver-desc">${d.desc}</div>
+    </div>
+  `).join('');
+}
+
+// Timeline
+function renderTimeline() {
+  const pinellas = DEVELOPMENTS.filter(d => d.county === 'pinellas');
+  const years = [2024,2025,2026,2027,2028,2029,2030,2031];
+  const colors = {delivered:'#16A34A',thisYear:'#16A34A',nextYear:'#2563EB',near:'#D97706',far:'#7C3AED',tbd:'#9CA3AF'};
+
+  function getBarColor(delivery) {
+    const dl = delivery.toLowerCase();
+    if (dl.includes('delivered') || dl.includes('now')) return colors.delivered;
+    if (dl.includes('2025') || dl.includes('2026')) return colors.thisYear;
+    if (dl.includes('2027')) return colors.nextYear;
+    if (dl.includes('2028') || dl.includes('2029')) return colors.near;
+    if (dl.includes('2030') || dl.includes('2031')) return colors.far;
+    return colors.tbd;
+  }
+  function getBarPos(delivery) {
+    const dl = delivery.toLowerCase();
+    if (dl.includes('now') || dl.includes('delivered')) return {start:0,end:25};
+    if (dl.includes('2025')) return {start:5,end:20};
+    if (dl.includes('q1 2026') || dl.includes('early 2026')) return {start:15,end:30};
+    if (dl.includes('q2 2026') || dl.includes('mid-2026') || dl === '2026') return {start:20,end:35};
+    if (dl.includes('q4 2025') || dl.includes('q1 2026')) return {start:12,end:28};
+    if (dl.includes('2027')) return {start:30,end:50};
+    if (dl.includes('2028')) return {start:45,end:65};
+    if (dl.includes('2029')) return {start:55,end:75};
+    if (dl.includes('2030')) return {start:65,end:85};
+    return {start:40,end:60};
+  }
+
+  let html = '<div style="overflow-x:auto">';
+  html += '<div style="min-width:800px">';
+  html += '<div class="timeline-header"><div class="timeline-label-col">Development</div>';
+  years.forEach(y => { html += `<div class="timeline-year">${y}</div>`; });
+  html += '</div>';
+  pinellas.forEach(d => {
+    const color = getBarColor(d.delivery);
+    const pos = getBarPos(d.delivery);
+    html += `<div class="timeline-row">
+      <div class="timeline-dev-name">${d.name}</div>
+      <div class="timeline-bar-area">
+        <div class="timeline-bar" style="left:${pos.start}%;width:${pos.end-pos.start}%;background:${color}">${d.delivery}</div>
+      </div>
+    </div>`;
+  });
+  html += '</div></div>';
+
+  // Legend
+  html += '<div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;justify-content:center">';
+  [{c:colors.thisYear,l:'Delivered / This Year'},{c:colors.nextYear,l:'Next Year'},{c:colors.near,l:'2–3 Years'},{c:colors.far,l:'4+ Years'},{c:colors.tbd,l:'TBD'}].forEach(i => {
+    html += `<span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--charcoal-500)"><span style="width:12px;height:12px;border-radius:3px;background:${i.c}"></span>${i.l}</span>`;
+  });
+  html += '</div>';
+
+  document.getElementById('timeline-container').innerHTML = html;
+}
+
+// Comparison Table
+function renderComparison() {
+  const pinellas = DEVELOPMENTS.filter(d => d.county === 'pinellas');
+  const hills = DEVELOPMENTS.filter(d => d.county === 'hillsborough');
+  const sara = DEVELOPMENTS.filter(d => d.county === 'sarasota');
+  const all = [...pinellas, ...hills, ...sara];
+
+  let html = '<table class="comparison-table"><thead><tr><th>Metric</th>';
+  all.forEach(d => {
+    const cls = d.slug === 'waldorf-astoria' ? ' class="waldorf-col"' : '';
+    html += `<th${cls} style="min-width:130px;font-size:11px">${d.name.replace(' Residences','').replace(' St. Petersburg','')}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+
+  // Helper
+  function row(label, fn, cat) {
+    if (cat) {
+      html += `<tr><td class="comparison-cat" colspan="${all.length+1}" style="padding-left:16px">${cat}</td></tr>`;
+    }
+    html += '<tr>';
+    html += `<td>${label}</td>`;
+    all.forEach(d => {
+      const cls = d.slug === 'waldorf-astoria' ? ' class="waldorf-col"' : '';
+      html += `<td${cls}>${fn(d)}</td>`;
+    });
+    html += '</tr>';
+  }
+
+  // Overview
+  row('Status', d => `<span class="badge ${badgeClass(d.status)}" style="font-size:10px;padding:3px 8px">${d.statusLabel}</span>`, 'Overview');
+  row('% Sold', d => d.soldPercent ? d.soldPercent + '%' : '—');
+
+  // Location & Team
+  row('Location', d => d.location || '—', 'Location & Team');
+  row('Developer', d => d.developer || '—');
+
+  // Building
+  row('Units', d => d.units || 'TBD', 'Building');
+  row('Stories', d => d.stories || '—');
+  row('Delivery', d => d.delivery || 'TBD');
+
+  // Pricing
+  row('Price Range', d => d.price || '—', 'Pricing');
+  row('Avg PSF', d => d.avgPsf ? '$' + d.avgPsf.toLocaleString() : '—');
+
+  // Policies
+  row('Rental Policy', d => d.rentalPolicy || '—', 'Policies');
+  row('Broker Commission', d => d.brokerCommission || '—');
+
+  html += '</tbody></table>';
+  document.getElementById('comparison-wrapper').innerHTML = html;
+}
+
+// Geographic Coverage
+function renderGeo() {
+  const counties = [
+    {name:'Pinellas County',devs:DEVELOPMENTS.filter(d=>d.county==='pinellas'),color:'var(--gold-500)',bgColor:'rgba(201,168,76,0.1)',textColor:'var(--gold-400)',desc:'St. Petersburg, Clearwater, and surrounding barrier island communities. Full analytical coverage with pricing, absorption, and competitive positioning.'},
+    {name:'Hillsborough County',devs:DEVELOPMENTS.filter(d=>d.county==='hillsborough'),color:'var(--charcoal-500)',bgColor:'rgba(100,100,120,0.1)',textColor:'var(--charcoal-400)',desc:'Downtown Tampa, South Tampa, Bayshore, Westshore, and Water Street corridors. Pipeline-level tracking with full profiles coming soon.'},
+    {name:'Sarasota County',devs:DEVELOPMENTS.filter(d=>d.county==='sarasota'),color:'var(--emerald-500)',bgColor:'rgba(13,150,104,0.1)',textColor:'#34D399',desc:'The Quay, Downtown Sarasota, and Golden Gate Point. Pipeline-level tracking covering luxury and ultra-luxury developments.'},
+  ];
+  document.getElementById('geo-grid').innerHTML = counties.map(c => {
+    const subs = [...new Set(c.devs.map(d=>d.location))].sort();
+    return `<div class="geo-card">
+      <div class="geo-header">
+        <div class="geo-icon" style="background:${c.bgColor}">📍</div>
+        <div>
+          <div class="geo-title">${c.name}</div>
+          <div class="geo-count" style="color:${c.textColor}"><span style="width:6px;height:6px;border-radius:50%;background:${c.color}"></span> ${c.devs.length} developments tracked</div>
+        </div>
+      </div>
+      <div class="geo-desc">${c.desc}</div>
+      <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--charcoal-400);margin-bottom:8px">Submarkets</div>
+      <div class="geo-submarkets">${subs.map(s=>`<span class="geo-submarket" style="background:${c.bgColor};color:${c.textColor};border:1px solid ${c.color}30">${s}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+// Methodology Sources
+function renderSources() {
+  document.getElementById('meth-sources').innerHTML = SOURCES.map(s => `
+    <div class="meth-source">
+      <div class="meth-source-name">${s.name}</div>
+      <div class="meth-source-desc">${s.desc}</div>
+    </div>
+  `).join('');
+}
+
+// ════════════════════════════════════════════════════════════════
+// INSIGHT KEY LEGEND
+// ════════════════════════════════════════════════════════════════
+
+function renderLegend() {
+  const statuses = [
+    {label:'Pre-Sales',color:'#C9A84C',bg:'rgba(201,168,76,0.15)'},
+    {label:'Reservation',color:'#C9A84C',bg:'rgba(201,168,76,0.15)'},
+    {label:'Contract',color:'#4CAF50',bg:'rgba(76,175,80,0.15)'},
+    {label:'Pre-Construction',color:'#4CAF50',bg:'rgba(76,175,80,0.15)'},
+    {label:'Under Construction',color:'#2196F3',bg:'rgba(33,150,243,0.15)'},
+    {label:'Delivering',color:'#FF9800',bg:'rgba(255,152,0,0.15)'},
+    {label:'Delivered',color:'#9E9E9E',bg:'rgba(158,158,158,0.15)'},
+  ];
+  const badges = [
+    {icon:'💎',label:'Ultra Luxury',color:'#C9A84C',bg:'rgba(201,168,76,0.15)',desc:'Projects priced above $1,500/SF with best-in-class finishes'},
+    {icon:'⭐',label:'Tier 1 Premium',color:'#C9A84C',bg:'rgba(201,168,76,0.12)',desc:'Top-tier developments with premium positioning'},
+    {icon:'🌊',label:'Waterfront',color:'#2196F3',bg:'rgba(33,150,243,0.12)',desc:'Direct waterfront with bay, gulf, or intracoastal views'},
+    {icon:'🏨',label:'Branded Residence',color:'#7B1FA2',bg:'rgba(123,31,162,0.12)',desc:'Hospitality-branded with hotel-caliber services'},
+    {icon:'🔑',label:'Short-Term Rental',color:'#FF9800',bg:'rgba(255,152,0,0.12)',desc:'Short-term rental program with hotel revenue sharing'},
+    {icon:'🆕',label:'New to Market',color:'#4CAF50',bg:'rgba(76,175,80,0.12)',desc:'Recently announced with limited public pricing data'},
+  ];
+  const grid = document.getElementById('legend-grid');
+  grid.innerHTML = `
+    <div class="legend-group">
+      <h4>Development Status</h4>
+      ${statuses.map(s=>`<div class="legend-item"><span class="legend-badge" style="color:${s.color};background:${s.bg}">${s.label}</span></div>`).join('')}
+    </div>
+    <div class="legend-group">
+      <h4>Classification Badges</h4>
+      ${badges.map(b=>`<div class="legend-item"><span class="legend-badge" style="color:${b.color};background:${b.bg}">${b.icon} ${b.label}</span><span class="legend-desc">${b.desc}</span></div>`).join('')}
+    </div>`;
+}
+
+// ════════════════════════════════════════════════════════════════
+// MARKET INSIGHTS
+// ════════════════════════════════════════════════════════════════
+
+function renderInsights() {
+  const insights = [
+    {icon:'📈',bg:'rgba(201,168,76,0.12)',title:'Market Overview',body:'1,240 units across 9 active Pinellas developments with a combined pipeline value exceeding $2.1B. The ultra-luxury tier ($1,200+/SF) is anchored by Waldorf Astoria and Roche Bobois Maison, while the premium tier ($800–$1,200/SF) is led by Art House.'},
+    {icon:'🔥',bg:'rgba(16,185,129,0.12)',title:'Hot Opportunities',body:'400 Central is delivering with 301 units available now. Art House (12.3% sold) and Waldorf Astoria (20.2% reserved) offer early-mover pricing in the pre-construction phase. Reflection is fully delivered with resale inventory.'},
+    {icon:'⏰',bg:'rgba(59,130,246,0.12)',title:'Upcoming Deliveries',body:'Art House targets Q2 2027 delivery, Roche Bobois aims for Q1 2027, and The Cade is projected for Q3 2026. Waldorf Astoria has the longest timeline at Q4 2030. Corey Landings and Viceroy timelines are TBD and Q2 2029 respectively.'},
+    {icon:'💰',bg:'rgba(236,72,153,0.12)',title:'Price Trends',body:'Waldorf Astoria active MLS listings average $1,449/SF with a range of $1,255–$1,879/SF (Stellar MLS, Feb 2026). Art House averages $940/SF. The spread between ultra-luxury and premium tiers is narrowing as branded-residence demand increases.'},
+    {icon:'📊',bg:'rgba(139,92,246,0.12)',title:'Absorption Intelligence',body:'Pipeline absorption averages ~16 contracts/month across Pinellas new construction. Waldorf Astoria leads with an AES of 1.15 (exceptional). 2BR units dominate demand at ~60% of total mix, followed by 3BR at ~25%.'},
+    {icon:'⚠️',bg:'rgba(245,158,11,0.12)',title:'Key Considerations',body:'Insurance costs and HOA fees remain headwinds for buyer decisions. Construction timelines are subject to permitting and supply chain variables. Always confirm current pricing and availability directly with each project\'s sales office.'},
+  ];
+  const grid = document.getElementById('insights-grid');
+  grid.innerHTML = insights.map(i=>`
+    <div class="insight-card">
+      <div class="insight-icon" style="background:${i.bg}">${i.icon}</div>
+      <h3>${i.title}</h3>
+      <p>${i.body}</p>
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════════════════════════════
+// DISCLAIMERS
+// ════════════════════════════════════════════════════════════════
+
+function renderDisclaimers() {
+  const items = [
+    {icon:'📄',title:'Informational Purposes Only',body:'This report is compiled for informational purposes only and does not constitute a solicitation, offering, or investment advice. All figures, pricing, availability, and project details should be independently verified before making purchase decisions.'},
+    {icon:'⚠️',title:'Subject to Change',body:'Pricing, floor plans, specifications, amenities, and availability are subject to change without notice at the sole discretion of each developer. Market conditions, interest rates, and regulatory environments may shift between publication and closing.'},
+    {icon:'⚖️',title:'No Developer Affiliation',body:'This report is not affiliated with, endorsed by, or officially sanctioned by any developer, sales team, or project featured herein. All data is independently gathered from public records, developer disclosures, and proprietary broker research.'},
+    {icon:'🏠',title:'Equal Housing Opportunity',body:'All properties featured in this report are offered in compliance with the Fair Housing Act. We are committed to providing equal professional service without regard to race, color, religion, sex, handicap, familial status, national origin, sexual orientation, or gender identity.'},
+  ];
+  const grid = document.getElementById('disclaimers-grid');
+  grid.innerHTML = items.map(d=>`
+    <div class="disclaimer-card">
+      <div class="disclaimer-icon">${d.icon}</div>
+      <div>
+        <h3>${d.title}</h3>
+        <p>${d.body}</p>
+      </div>
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════════════════════════════
+// CHARTS (Chart.js)
+// ════════════════════════════════════════════════════════════════
+
+let chartInstances = {};
+
+function renderCharts() {
+  // Destroy existing
+  Object.values(chartInstances).forEach(c => c.destroy());
+  chartInstances = {};
+
+  const tooltipStyle = {backgroundColor:'#141418',titleColor:'#FEFDFB',bodyColor:'#FEFDFB',borderWidth:0,cornerRadius:8,titleFont:{size:13},bodyFont:{size:13},padding:12};
+
+  // Inventory by Status (Pinellas only — corrected from source data)
+  chartInstances.status = new Chart(document.getElementById('chart-status'), {
+    type: 'bar',
+    data: {
+      labels: ['Pre-Sales','Pre-Construction','Under Construction','Delivering','Delivered'],
+      datasets: [{
+        data: [279,165,88,464,244],
+        backgroundColor: ['#C9A84C','#4CAF50','#2196F3','#FF9800','#9E9E9E'],
+        borderRadius: 6, borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{...tooltipStyle,callbacks:{label:ctx=>ctx.raw+' units'}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{grid:{color:'#E5E5E7'},ticks:{font:{size:12}}}}
+    }
+  });
+
+  // Developer Pie (Pinellas only — corrected from source data)
+  chartInstances.dev = new Chart(document.getElementById('chart-developer'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Kolter Urban','Red Apple','VALOR Capital','PMG & Feldman','HP Capital','Viceroy Hotel Group','TBD','Backstreets Capital'],
+      datasets: [{
+        data: [377,301,165,163,88,86,45,15],
+        backgroundColor: ['#0D9668','#C9A84C','#3B82F6','#EC4899','#F59E0B','#8B5CF6','#9E9E9E','#6B7280'],
+        borderWidth: 2, borderColor: '#fff',
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      cutout: '50%',
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:11},padding:12,usePointStyle:true,pointStyle:'circle'}},
+        tooltip:{...tooltipStyle,callbacks:{label:ctx=>ctx.label+': '+ctx.raw+' units'}}
+      }
+    }
+  });
+
+  // PSF Horizontal Bar (only developments with confirmed PSF from MLS/developer)
+  chartInstances.psf = new Chart(document.getElementById('chart-psf'), {
+    type: 'bar',
+    data: {
+      labels: ['Art House','Waldorf Astoria'],
+      datasets: [{
+        data: [940,1449],
+        backgroundColor: ['#0D9668','#C9A84C'],
+        borderRadius: 6, borderSkipped: false,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{...tooltipStyle,callbacks:{label:ctx=>'$'+ctx.raw.toLocaleString()+'/SF'}}},
+      scales:{x:{grid:{color:'#E5E5E7'},ticks:{font:{size:12},callback:v=>'$'+v.toLocaleString()},min:0},y:{grid:{display:false},ticks:{font:{size:13,weight:'600'}}}}
+    }
+  });
+}
+
+// ════════════════════════════════════════════════════════════════
+// PAGE SWITCHING
+// ════════════════════════════════════════════════════════════════
+
+function switchPage(page) {
+  document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+
+  if (page === 'home') {
+    document.getElementById('page-home').classList.add('active');
+    document.querySelectorAll('.nav-tab')[0].classList.add('active');
+  } else {
+    document.getElementById('page-report').classList.add('active');
+    document.querySelectorAll('.nav-tab')[1].classList.add('active');
+    // Re-render charts when switching to report (canvas needs to be visible)
+    setTimeout(renderCharts, 100);
+  }
+  window.scrollTo(0,0);
+}
+
+// ════════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDevCards();
+  renderMetrics();
+  renderTrends();
+  renderDrivers();
+  renderTimeline();
+  renderComparison();
+  renderLegend();
+  renderInsights();
+  renderGeo();
+  renderDisclaimers();
+  renderSources();
+});
+</script>
+</body>
+</html>

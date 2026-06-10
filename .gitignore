@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env.production
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Dev artifacts — screenshots, generated images, MCP scratch dirs
+# These accumulate at the repo root and shouldn't ship.
+/*.png
+/*.jpg
+/*.jpeg
+.playwright-mcp/
+.vercel

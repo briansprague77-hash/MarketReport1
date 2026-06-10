@@ -1,0 +1,11 @@
+# Tampa Bay New Construction Market Report
+# https://developercertified.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://developercertified.com/sitemap.xml
+
+# Block internal API routes
+Disallow: /api/
