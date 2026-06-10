@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 const navLinks = [
   { href: '/developments', label: 'Developments', matchPaths: ['/developments'] },
   { href: '/market-report', label: 'Market Data', matchPaths: ['/market-report'] },
+  { href: '/resale-market', label: 'Resale Market', matchPaths: ['/resale-market'] },
   { href: '/realtor-resources', label: 'Realtor Resources', matchPaths: ['/realtor-resources'] },
   { href: '/events', label: 'Events', matchPaths: ['/events'] },
   { href: '/about', label: 'About', matchPaths: ['/about'] },
