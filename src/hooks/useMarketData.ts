@@ -29,7 +29,7 @@ export type GeoFilter =
 // Micromarket slug mappings — keyed by GeoFilter, valued by development slugs
 const MICROMARKET_SLUGS: Record<string, string[]> = {
   // Pinellas
-  'downtown-stpete': ['waldorf-astoria', 'art-house', '400-central', 'roche-bobois', 'reflection', 'four-seasons-stpete', 'kolter-3rd-ave', 'kolter-bayfront'],
+  'downtown-stpete': ['waldorf-astoria', 'art-house', '400-central', 'roche-bobois', 'reflection', 'kolter-3rd-ave', 'kolter-bayfront'],
   'mirror-lake': ['the-cade', 'lake-house'],
   'stpete-beach': ['corey-landings'],
   'clearwater-beach': ['viceroy-clearwater'],
@@ -38,11 +38,11 @@ const MICROMARKET_SLUGS: Record<string, string[]> = {
   'water-street': ['tampa-edition'],
   'channel-district': ['hotel-ora'],
   'bayshore-blvd': ['ritz-carlton-tower-ii', 'altura-bayshore'],
-  'westshore': ['aqua-westshore', 'marina-pointe-luna'],
+  'westshore': ['aqua-westshore'],
   // Sarasota
-  'the-quay': ['ritz-carlton-sarasota-bay'],
-  'downtown-sarasota': ['one-park-sarasota', 'the-edge-sarasota', 'waldorf-astoria-sarasota', 'sota-residences', 'mira-mar-sarasota', 'adagio-sarasota', 'high-line-sarasota', 'the-palm-625'],
-  'golden-gate-point': ['six88-residences', 'peninsula-sarasota'],
+  'the-quay': ['ritz-carlton-sarasota-bay', 'one-park-sarasota', '1000-boulevard-of-the-arts'],
+  'downtown-sarasota': ['the-edge-sarasota', 'waldorf-astoria-sarasota', 'sota-residences', 'mira-mar-sarasota', 'adagio-sarasota', 'high-line-sarasota', 'the-palm-625', 'saravela-sarasota', 'the-gallery-sarasota'],
+  'golden-gate-point': ['six88-residences', 'peninsula-sarasota', 'amara-sarasota-bay', 'the-owen-golden-gate-point'],
 };
 
 const GEO_LABELS: Record<GeoFilter, string> = {

@@ -923,7 +923,7 @@ const sarasotaStubs: DevelopmentSummary[] = [
     status: 'reservation',
     statusLabel: statusLabelFromStatus('reservation'),
     units: 142,
-    delivery: 'Late 2026',
+    delivery: '~2029',
     hasPage: false,
     type: 'Condominium',
     tags: ['Tier 3 Luxury', 'Mixed-Use', 'New to Market'],
@@ -933,7 +933,7 @@ const sarasotaStubs: DevelopmentSummary[] = [
     price: 'High $700K - under $2M',
     bedrooms: '1-3',
     sqft: '~1,250 SF avg',
-    description: '142 units (126 market-rate + 16 attainable under Live Local Act) in an 11-story mixed-use tower at Main & Osprey — the former Michael Saunders & Co. office site. Same team as The Edge Sarasota (JEBCO Ventures + Omnium Real Estate). Unit sizes average 1,250 SF with 1–3 bedroom layouts. Pricing from the high $700,000s to under $2M — the most affordably priced of the 11 Sarasota luxury projects, deliberately targeting a broader market than the ultra-luxury segment. Rooftop amenity deck with pool, fitness center, gathering areas. 6,600+ SF ground-floor retail. Estimated late 2026 delivery. By Hoyt Architects.',
+    description: '142 units (126 market-rate + 16 attainable under Live Local Act) in an 11-story mixed-use tower at Main & Osprey — the former Michael Saunders & Co. office site. Same team as The Edge Sarasota (JEBCO Ventures + Omnium Real Estate). Unit sizes average 1,250 SF, 1–3BR. Pricing from the high $700,000s to under $2M — the most affordably priced of the downtown Sarasota set. Rooftop amenity deck, 6,600+ SF ground-floor retail. Hoyt Architects. As of Jun 2026: pre-construction (reservations) — construction targeted late 2026, completion ~2029. Not yet on Stellar MLS.',
     stories: 11,
   },
   {
