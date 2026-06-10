@@ -190,11 +190,11 @@ export const reflection: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 450,
-    currentPsf: 727, // Avg of 10 active MLS listings (Apr 2026)
+    currentPsf: 722, // Avg of 8 active MLS listings (Jun 2026); +1 pending, 3 recent closings avg $671/SF
     launchPriceRange: 'From $450,000',
-    currentPriceRange: '$899,000-$2,055,000', // Unit 1106 reduced from $925K to $899K
-    priceChangePercent: 61.6,
-    asOfDate: '2026-04-08',
+    currentPriceRange: '$1,175,000-$1,999,000',
+    priceChangePercent: 60.4,
+    asOfDate: '2026-06-10',
     // MLS Active (Apr 2026): 10 listings (3 developer + 7 resale). Down from 13+2 pending.
     // Price reductions detected:
     //   Unit 1106: $925,000 → $899,000 (-$26K, -2.8%) — 174 DOM

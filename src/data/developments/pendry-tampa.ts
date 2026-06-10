@@ -94,10 +94,10 @@ export const pendryTampa: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 1085,
-    currentPsf: 1329, // Avg of 9 active MLS listings (Apr 2026)
+    currentPsf: 1353, // Median of 10 active MLS listings (Jun 2026); avg skewed by $45.5M South PH at $4,517/SF
     currentPriceRange: '$1,875,000-$5,500,000 (+ $45.5M PH)',
-    priceChangePercent: 22.5, // $1,085 launch → $1,329 current avg
-    asOfDate: '2026-04-09',
+    priceChangePercent: 24.7, // $1,085 launch → $1,353 current median
+    asOfDate: '2026-06-10',
     // MLS Active (Apr 2026): 9 listings, all Smith & Associates (Sarena Irwin, Kat Haynes)
     //   Unit 3303: 1BR, 1,378 SF, $1,875,000 ($1,361/SF), DOM 75
     //   Unit 3107: 2BR, 1,697 SF, $2,107,000 ($1,242/SF), DOM 31

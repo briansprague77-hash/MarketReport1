@@ -97,10 +97,10 @@ export const theCade: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 907, // Unit 300 (L3, 2,118 SF): $1,917,800 / 2,118 = $906/SF
-    currentPsf: 907,
-    currentPriceRange: '$1,917,800-$3,607,800',
-    priceChangePercent: 0,
-    asOfDate: '2026-04-08',
+    currentPsf: 923, // Avg of 2 active MLS listings (Jun 2026: $838 & $1,007/SF); +1 pending at $825/SF
+    currentPriceRange: '$1,790,000-$3,445,000',
+    priceChangePercent: 1.8,
+    asOfDate: '2026-06-10',
     // Developer availability (April 2026 — from elevation map):
     //   Unit 200 (A South Terrace, L2, 2,167 SF): $2,053,000 ($948/SF) — garden terrace unit
     //   Unit 300 (A South, L3, 2,118 SF): $1,917,800 ($906/SF) — lowest-priced available

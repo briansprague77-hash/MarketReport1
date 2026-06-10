@@ -106,11 +106,11 @@ export const rocheBobois: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 1433,   // 2BR comparable PSF — launch and current are the same (brand new to market, just launched)
-    currentPsf: 1433,  // 2BR MLS LP/SF ($1,433) — best comparable to other buildings. Studios inflate avg to $1,632 due to small SF denominator.
+    currentPsf: 1433,  // 2BR MLS LP/SF ($1,433, Unit 1503) — best comparable. 4 active Jun 2026 ($1,432–$1,993/SF); studios inflate avg.
     launchPriceRange: 'From $544,500',
-    currentPriceRange: '$544,500-$13,200,000',
+    currentPriceRange: '$737,500-$1,972,500',
     priceChangePercent: 0, // Brand new to market — no appreciation yet (just launched)
-    asOfDate: '2026-04-08',
+    asOfDate: '2026-06-10',
     // PSF by unit type (MLS Apr 2026):
     //   Studios (370 SF): $1,472-$1,993/SF — inflated by small denominator, not comparable
     //   1BR (565 SF): $1,495-$1,762/SF — still inflated

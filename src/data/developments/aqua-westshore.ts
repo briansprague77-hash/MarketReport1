@@ -93,10 +93,10 @@ export const aquaWestshore: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 776,
-    currentPsf: 956, // Avg of 6 active MLS listings (Apr 2026)
-    currentPriceRange: '$1,870,000-$5,680,000',
-    priceChangePercent: 23.2, // $776 launch → $956 current avg
-    asOfDate: '2026-04-09',
+    currentPsf: 898, // Avg of 8 active MLS listings (Jun 2026); +4 pending avg $995/SF, all Smith & Associates
+    currentPriceRange: '$1,650,000-$3,040,000',
+    priceChangePercent: 15.7, // $776 launch → $898 current avg
+    asOfDate: '2026-06-10',
     // MLS Active (Apr 2026): 6 active + 3 pending, all Smith & Associates
     //   Unit 503: 3BR, 2,411 SF, $1,870,000 ($776/SF), DOM 73 — Bridget Cortes
     //   Unit 604: 3BR, 2,411 SF, $1,960,000 ($813/SF), DOM 2 — Inna Sych

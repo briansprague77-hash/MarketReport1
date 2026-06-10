@@ -15,7 +15,7 @@ export const residencesAt400CentralDevelopment: Development = {
   fullName: 'Residences at 400 Central',
   tagline: 'Iconic Downtown Living at the Heart of St. Petersburg',
   heroDescription:
-    'Move-in ready condominiums in downtown St. Petersburg presenting immediate inventory opportunity. Current entry around $1.08M (2BR) targets professional couples and downsizers — the most attainable downtown new construction relative to Art House ($1.36M entry) and Waldorf pre-sales ($1.5M+).',
+    'Move-in ready condominiums in downtown St. Petersburg presenting immediate inventory opportunity. Current 2BR entry around $1.0M targets professional couples and downsizers — the most attainable downtown new construction relative to Art House and Waldorf pre-sales ($1.5M+). The delivery wave continues: 49 closings Mar–May 2026 averaged $1,086/SF; 29 active MLS listings (Jun 2026, avg ask ~$1,020/SF).',
   location: '400 Central Ave., St. Petersburg 33701',
   address: '400 Central Ave.',
   county: 'pinellas',

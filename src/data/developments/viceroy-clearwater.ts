@@ -106,11 +106,11 @@ export const viceroyClearwater: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 960,
-    currentPsf: 1198, // MLS avg LP/SF of 6 active listings (Apr 2026). 2BR at $918/SF, 3BR at $1,118-$1,425/SF.
+    currentPsf: 1189, // MLS avg LP/SF of 6 active listings (Jun 2026). 2BR $918/SF, 3BR $1,118-$1,425/SF; +1 pending at $1,575/SF.
     launchPriceRange: 'From $1,995,000',
-    currentPriceRange: '$1,995,000-$12,048,000',
-    priceChangePercent: 24.8, // $960 launch → $1,198 current avg
-    asOfDate: '2026-04-08',
+    currentPriceRange: '$1,995,000-$4,245,000',
+    priceChangePercent: 23.9, // $960 launch → $1,189 current avg
+    asOfDate: '2026-06-10',
     // MLS Active (Apr 2026): 14 total listings — 6 active, 1 pending, 7 cancelled
     // Sales team change: Waypoint Resort Real Estate (Myles Newell primary, Regina Sotomayor)
     //   Previously Nicoleta Forbes, Ty Joslyn, Inna Sych

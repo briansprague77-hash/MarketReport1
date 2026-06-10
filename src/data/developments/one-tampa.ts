@@ -86,10 +86,10 @@ export const oneTampa: DevelopmentProfile = {
 
   pricingHistory: {
     launchPsf: 764,
-    currentPsf: 970, // Avg of 7 active MLS listings (Apr 2026)
-    currentPriceRange: '$958,000-$5,399,000',
-    priceChangePercent: 27.0, // $764 launch → $970 current avg
-    asOfDate: '2026-04-09',
+    currentPsf: 916, // Avg of 7 active MLS listings (Jun 2026), all Smith & Associates (developer)
+    currentPriceRange: '$1,049,000-$4,649,000',
+    priceChangePercent: 19.9, // $764 launch → $916 current avg
+    asOfDate: '2026-06-10',
     // MLS Active (Apr 2026): 7 listings, all Smith & Associates (developer)
     //   Unit 1407: 1BR, 1,144 SF, $958,000 ($837/SF), DOM 123
     //   Unit 2304: 2BR, 1,608 SF, $1,229,000 ($764/SF), DOM 123
