@@ -25,6 +25,11 @@ import { marinaBayResidences } from './marina-bay-residences';
 import { ritzCarltonSarasotaBay } from './ritz-carlton-sarasota-bay';
 import { rosewoodResidencesLidoKey } from './rosewood-residences-lido-key';
 import { stRegisLongboatKey } from './st-regis-longboat-key';
+import { oneParkSarasota } from './one-park-sarasota';
+import { theEdgeSarasota } from './the-edge-sarasota';
+import { saravelaSarasota } from './saravela-sarasota';
+import { theGallerySarasota } from './the-gallery-sarasota';
+import { theOwenGoldenGatePoint } from './the-owen-golden-gate-point';
 
 // Mid-tier development profiles (Hillsborough)
 import { alturaBayshore } from './altura-bayshore';
@@ -118,6 +123,11 @@ export const developmentProfiles: Record<string, DevelopmentProfile> = {
   'ritz-carlton-sarasota-bay': ritzCarltonSarasotaBay,
   'rosewood-residences-lido-key': rosewoodResidencesLidoKey,
   'st-regis-longboat-key': stRegisLongboatKey,
+  'one-park-sarasota': oneParkSarasota,
+  'the-edge-sarasota': theEdgeSarasota,
+  'saravela-sarasota': saravelaSarasota,
+  'the-gallery-sarasota': theGallerySarasota,
+  'the-owen-golden-gate-point': theOwenGoldenGatePoint,
   // Hillsborough County
   'altura-bayshore': alturaBayshore,
   'one-tampa': oneTampa,
@@ -676,6 +686,11 @@ const profileTags: Record<string, string[]> = {
   'ritz-carlton-sarasota-bay': ['Tier 1 Luxury', 'Hospitality Brand', 'Waterfront'],
   'rosewood-residences-lido-key': ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand'],
   'st-regis-longboat-key': ['Tier 1 Luxury', 'Beachfront', 'Waterfront', 'Hospitality Brand'],
+  'one-park-sarasota': ['Tier 2 Luxury', 'Waterfront'],
+  'the-edge-sarasota': ['Tier 1 Luxury', 'Boutique'],
+  'saravela-sarasota': ['Tier 2 Luxury', 'Mixed-Use', 'Short-Term Rental'],
+  'the-gallery-sarasota': ['Tier 2 Luxury', 'Mixed-Use'],
+  'the-owen-golden-gate-point': ['Tier 1 Luxury', 'Waterfront', 'Boutique'],
 };
 
 function profileToSummary(slug: string, p: DevelopmentProfile): DevelopmentSummary {
@@ -772,52 +787,12 @@ const sarasotaStubs: DevelopmentSummary[] = [
     description: '117 residences in a 20-story tower at the former Hyatt Regency site, part of a mixed-use development including a Hyatt Centric Harborside hotel and ground-level restaurant. Units 1,200–3,000+ SF, 1-3 bedroom layouts. By Kolter Urban; sales by Premier Sotheby\'s International Realty. Construction start targeted Q3 2026; delivery H2 2028. Stellar MLS (Jun 2026): 7 active (avg ~$1,202/SF) and 20 pending (avg ~$1,221/SF) — exceptional absorption, with 27 residences active-or-under-contract; range $1.34M–$4.8M.',
     stories: 20,
   },
-  {
-    slug: 'one-park-sarasota',
-    name: 'One Park Sarasota',
-    location: 'Downtown Sarasota',
-    county: 'sarasota',
-    status: 'under-construction',
-    statusLabel: statusLabelFromStatus('under-construction'),
-    units: 86,
-    delivery: 'Q1-Q2 2027',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 2 Luxury', 'Waterfront'],
-    developer: 'PMG',
-    address: '668 Quay Commons, Sarasota, FL 34236',
-    price: '$2.7M - $6.6M',
-    bedrooms: '3-5',
-    avgPsf: 1423,
-    description: '86-unit, 18-story luxury tower (One Park Residences) at 668 Quay Commons in The Quay district, Downtown Sarasota, by PMG (Property Markets Group — same developer as Waldorf Astoria St. Petersburg). Sales by Coldwell Banker. Stellar MLS (Jun 2026): 4 active + 1 pending, $2.7M–$6.6M (~$1,050–$1,764/SF, avg ~$1,423/SF). Delivery 2027.',
-    stories: 18,
-  },
+  // NOTE: 'one-park-sarasota' promoted to a full DevelopmentProfile -> detail page.
   // NOTE: 'ritz-carlton-sarasota-bay' promoted to a full DevelopmentProfile
   // (src/data/developments/ritz-carlton-sarasota-bay.ts) → has a detail page.
 
   // ── Downtown Sarasota ───────────────────────────────────────────────────────
-  {
-    slug: 'the-edge-sarasota',
-    name: 'The Edge Sarasota',
-    location: 'Downtown Sarasota',
-    county: 'sarasota',
-    status: 'under-construction',
-    statusLabel: statusLabelFromStatus('under-construction'),
-    units: 27,
-    delivery: 'Fall 2026',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 1 Luxury', 'Boutique'],
-    developer: 'JEBCO Ventures / ORE Development',
-    architect: 'BDG Architects',
-    address: '290 Cocoanut Ave, Sarasota, FL 34236',
-    price: '$3.27M - $3.57M',
-    bedrooms: '2-3',
-    sqft: '3,145-3,553 SF',
-    avgPsf: 1032,
-    description: '27 residences across 10 stories at the corner of Cocoanut and Fruitville by JEBCO Ventures and ORE Development. Units 3,145–3,553 SF, 2-3BR. Topped out December 2025; on schedule for fall 2026 move-in. BDG Architects, DSDG Architects (interiors), Voeller Construction (GC). Stellar MLS (Jun 2026): near sellout — only 2 active + 1 pending remain (active ~$933–$1,132/SF, avg ~$1,032/SF; pending at $1,458/SF).',
-    stories: 10,
-  },
+  // NOTE: 'the-edge-sarasota' promoted to a full DevelopmentProfile -> detail page.
   {
     slug: 'waldorf-astoria-sarasota',
     name: 'Waldorf Astoria Residences Sarasota',
@@ -1009,70 +984,10 @@ const sarasotaStubs: DevelopmentSummary[] = [
     description: '54-residence twin-tower luxury condominium (31 north + 23 south) replacing Pier 550 on Golden Gate Point, by The Ronto Group (Naples). 7 floor plans ~2,600–3,500 SF, from $4.2M. Stellar MLS (Jun 2026): 6 active + 3 pending, $3.99M–$7.25M (~$1,758–$2,776/SF, avg ~$2,066/SF). Delivery 2026.',
   },
   // NOTE: 'rosewood-residences-lido-key' promoted to a full DevelopmentProfile → detail page.
-  {
-    slug: 'saravela-sarasota',
-    name: 'Saravela Sarasota',
-    location: 'Downtown Sarasota',
-    county: 'sarasota',
-    status: 'pre-sales',
-    statusLabel: statusLabelFromStatus('pre-sales'),
-    units: 293,
-    delivery: '2027',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 2 Luxury', 'Mixed-Use', 'Short-Term Rental', 'New to Market'],
-    developer: 'GSP Development',
-    address: '430 N Tamiami Trail, Sarasota, FL 34236',
-    price: '$998K - $3.45M',
-    bedrooms: '1-3',
-    avgPsf: 1348,
-    stories: 19,
-    submarket: 'Downtown Sarasota',
-    description: '293 residences (282 condominiums + 11 street-level townhomes) across two towers up to 19 stories at 430 N Tamiami Trail, downtown Sarasota, by GSP Development. Kimmich Smith Architecture; interiors by ID & Design International; 47,000+ SF of amenities; rental flexibility. Stellar MLS (Jun 2026): 4 active, $998K–$3.45M (~$1,166–$1,651/SF, avg ~$1,348/SF) — among the most attainable new construction downtown. Delivery 2027.',
-  },
+  // NOTE: 'saravela-sarasota' promoted to a full DevelopmentProfile -> detail page.
   // NOTE: 'st-regis-longboat-key' promoted to a full DevelopmentProfile → detail page.
-  {
-    slug: 'the-gallery-sarasota',
-    name: 'The Gallery Sarasota',
-    location: 'Rosemary District, Downtown Sarasota',
-    county: 'sarasota',
-    status: 'delivered',
-    statusLabel: statusLabelFromStatus('delivered'),
-    units: 60,
-    delivery: 'Available Now',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 2 Luxury', 'Mixed-Use', 'New to Market'],
-    developer: 'Palm One Real Estate & Development / The Simpson Organization',
-    address: '1305 4th St, Sarasota, FL 34236',
-    price: '$795K - $1.995M',
-    bedrooms: '1-3',
-    avgPsf: 942,
-    stories: 6,
-    submarket: 'Downtown Sarasota',
-    description: '60-residence, 6-level mixed-use condominium in the Rosemary District (1305 4th St), by Palm One Real Estate & Development with The Simpson Organization. 1–3BR with rooftop pool terrace, fitness center, social lounge. Stellar MLS (Jun 2026): 9 active, $795K–$1.995M (~$842–$1,065/SF, avg ~$942/SF) — the most attainable entry in the downtown Sarasota new-construction set.',
-  },
-  {
-    slug: 'the-owen-golden-gate-point',
-    name: 'The Owen Golden Gate Point',
-    location: 'Golden Gate Point',
-    county: 'sarasota',
-    status: 'under-construction',
-    statusLabel: statusLabelFromStatus('under-construction'),
-    units: 29,
-    delivery: 'Q2 2026',
-    hasPage: false,
-    type: 'Condominium',
-    tags: ['Tier 1 Luxury', 'Waterfront', 'Boutique', 'New to Market'],
-    developer: 'The Ronto Group / Wheelock Street Capital',
-    address: '325 Golden Gate Point, Sarasota, FL 34236',
-    price: '$2.54M - $3.74M',
-    bedrooms: '3',
-    avgPsf: 1225,
-    stories: 10,
-    submarket: 'Golden Gate Point',
-    description: '29-residence boutique luxury mid-rise (10 floors) at 325 Golden Gate Point, by The Ronto Group with Wheelock Street Capital. Broke ground June 2024; delivery Q2 2026. Stellar MLS (Jun 2026): 4 active + 3 pending + 1 closed ($1,236/SF), $2.54M–$3.74M (~$993–$1,485/SF, avg ~$1,225/SF).',
-  },
+  // NOTE: 'the-gallery-sarasota' promoted to a full DevelopmentProfile -> detail page.
+  // NOTE: 'the-owen-golden-gate-point' promoted to a full DevelopmentProfile -> detail page.
 ];
 
 // ─── Pinellas County Stubs (beach submarkets without full data files yet) ───

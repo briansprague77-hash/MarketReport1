@@ -41,6 +41,7 @@ import {
 import ComparisonMatrix from '@/components/sections/market/ComparisonMatrix';
 import HoaAmenityGrid from '@/components/sections/market/HoaAmenityGrid';
 import InsightKeyLegend from '@/components/ui/InsightKeyLegend';
+import LeadGate from '@/components/ui/LeadGate';
 
 // ─── Tab Configuration ───────────────────────────────────────────────────────
 
@@ -277,6 +278,15 @@ export default function MarketReportClient() {
       <MarketTrends data={data} />
       <DemandDrivers />
 
+      {/* ═══ CHAPTERS 2-6: DEEP ANALYTICS (gated) ════════════════════════
+          Soft email-wall — top dashboard + trends stay open as the SEO teaser;
+          the deep analytics unlock with one email (captured as a lead). */}
+      <LeadGate
+        id="market-report-deep"
+        source="market-report"
+        title="Unlock the full Tampa Bay market report"
+        subtitle="Pricing tiers, absorption, supply forecast, sell-through rankings, flip profit, and cross-market intel — sourced from Stellar MLS. Enter your email to read the full report."
+      >
       {/* ═══ CHAPTER 2: MARKET ANALYTICS ═════════════════════════════════ */}
       <div className="relative py-8 bg-charcoal-950">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
@@ -402,6 +412,7 @@ export default function MarketReportClient() {
       <ResaleCrossover data={data} />
       <FlipProfitChart />
       <MarketInsights data={data} />
+      </LeadGate>
 
       {/* ═══ APPENDIX ════════════════════════════════════════════════════ */}
       <section className="section-padding bg-ivory-50">
