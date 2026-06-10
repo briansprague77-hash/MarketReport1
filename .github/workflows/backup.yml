@@ -1,0 +1,37 @@
+name: Weekly Backup Snapshot
+
+# Creates a dated, immutable restore point every week (and on demand).
+# Defends against accidental history/branch wipes: even if main is force-pushed
+# or reset, the backup-<date> tags and backup/latest branch preserve the code.
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # Mondays 07:00 UTC
+  workflow_dispatch: {}     # allows manual "Run workflow" from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create dated backup tag + rolling pointer
+        run: |
+          set -euo pipefail
+          DATE="$(date +%Y-%m-%d)"
+          TAG="backup-${DATE}"
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists — nothing to do."
+          else
+            git tag -a "$TAG" -m "Automated weekly backup snapshot (${DATE})"
+            git push origin "$TAG"
+            echo "Pushed restore point: $TAG"
+          fi
+          # Maintain a rolling 'backup/latest' branch always pointing at newest snapshot
+          git push origin "HEAD:refs/heads/backup/latest" --force
