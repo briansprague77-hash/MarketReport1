@@ -23,12 +23,12 @@ export type { County, DevelopmentType };
 // ─── Pipeline Overview ──────────────────────────────────────────────────────
 
 export const pipeline = {
-  totalUnitsInPipeline: 3364, // 3 counties (2026-06-10): −256 delisted (Marina Pointe T2 151u + T3 105u) + 24 new beach (Beach Flower 8 + 211 Skiff Point 12 + The Pearl 4).
-  totalProjectValue: '$5.7B+', // Full Tampa Bay pipeline (Jun 2026).
-  activeDevelopments: 31,     // 14 Pinellas + 6 Hillsborough + 11 Sarasota
+  totalUnitsInPipeline: 3934, // 3 counties (2026-06-10). Net vs 3,596: −256 Marina Pointe T2/T3, +24 Pinellas beach, +570 new Sarasota (Amara 54, Rosewood Lido 65, Saravela 293, St Regis LBK 69, Gallery 60, Owen 29).
+  totalProjectValue: '$7.6B+', // Full Tampa Bay pipeline (Jun 2026) — Sarasota ultra-luxury (Rosewood, St Regis, Saravela) adds materially.
+  activeDevelopments: 37,     // 14 Pinellas + 6 Hillsborough + 17 Sarasota
   pinellasDevelopments: 14,
   hillsboroughDevelopments: 6,
-  sarasotaDevelopments: 11,
+  sarasotaDevelopments: 17,
   marketsTracked: [
     'Downtown St. Petersburg',
     'St. Pete Beach',
@@ -48,12 +48,12 @@ export const pipeline = {
 
 export const heroStats = [
   {
-    value: '31',
+    value: '37',
     label: 'Developments Tracked',
-    sublabel: '14 Pinellas · 6 Hillsborough · 11 Sarasota',
+    sublabel: '14 Pinellas · 6 Hillsborough · 17 Sarasota',
   },
   {
-    value: '5.7',
+    value: '7.6',
     prefix: '$',
     suffix: 'B+',
     label: 'Total Pipeline Value',
@@ -65,9 +65,9 @@ export const heroStats = [
     sublabel: 'Pinellas · Hillsborough · Sarasota',
   },
   {
-    value: '3,364',
+    value: '3,934',
     label: 'Pipeline Units',
-    sublabel: '31 developments across 3 counties',
+    sublabel: '37 developments across 3 counties',
   },
 ];
 
@@ -233,20 +233,20 @@ export const marketTrends: YoYTrend[] = [
   },
   {
     metric: 'Pipeline Developments',
-    current: '31',
+    current: '37',
     prior: '31',
-    change: '−3 delisted, +3 new beach (Beach Flower, 211 Skiff Pt, The Pearl)',
-    direction: 'stable',
+    change: 'Net +6: −3 delisted, +3 Pinellas beach, +6 new Sarasota',
+    direction: 'up',
     period: 'Jun 2026',
     source: 'Tracked developments',
     county: 'all',
   },
   {
     metric: 'Pipeline Units',
-    current: '3,364',
+    current: '3,934',
     prior: '3,596',
-    change: '−232 net (−256 Marina Pointe T2/T3, +24 new beach)',
-    direction: 'down',
+    change: '+338 net (−256 Marina Pointe, +24 Pinellas beach, +570 new Sarasota)',
+    direction: 'up',
     period: 'Jun 2026',
     source: 'Developer disclosures',
     county: 'all',
@@ -257,9 +257,9 @@ export const marketTrends: YoYTrend[] = [
 // Sourced from tracked developments + Stellar MLS (Jun 2026).
 export const marketSummaryStats = {
   avgPsf: '$1,105', // Pipeline average across all tracked developments with PSF data (Jun 2026). Range: $722 (Reflection) to $1,563 (Tampa EDITION resale).
-  pipelineUnits: '3,364', // 3 counties (2026-06-10): delisted Marina Pointe T2/T3; added Beach Flower, 211 Skiff Point, The Pearl
-  pipelineValue: '$5.7B+', // Full Tampa Bay pipeline value.
-  activeDevelopments: '31', // 14 Pinellas + 6 Hillsborough + 11 Sarasota
+  pipelineUnits: '3,934', // 3 counties (2026-06-10): delisted Marina Pointe T2/T3; added 3 Pinellas beach + 6 Sarasota new
+  pipelineValue: '$7.6B+', // Full Tampa Bay pipeline value.
+  activeDevelopments: '37', // 14 Pinellas + 6 Hillsborough + 17 Sarasota
   asOfDate: '2026-06-10',
 };
 
