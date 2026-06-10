@@ -36,6 +36,7 @@ import BrokerCommissionSection from '@/components/sections/development/BrokerCom
 import DocumentLinksSection from '@/components/sections/development/DocumentLinksSection';
 import SocialProof from '@/components/sections/development/SocialProof';
 import TailInventory from '@/components/sections/development/TailInventory';
+import LeadGate from '@/components/ui/LeadGate';
 
 interface DevelopmentPageProps {
   params: { slug: string };
@@ -129,13 +130,23 @@ export default function DevelopmentPage({ params }: DevelopmentPageProps) {
       <ExecutiveSummary development={devData} />
       <MarketAnalysis development={devData} />
       <SalesPerformance development={devData} />
-      {/* Tail Inventory — only for delivered/sold-out buildings with resale market */}
-      {devData.tailInventory && (devData.status === 'delivered' || devData.status === 'sold-out') && (
-        <TailInventory data={devData.tailInventory} developmentName={devData.name} />
-      )}
-      <PricingLadder development={devData} />
-      <TowerHeatmap development={devData} />
-      <BedroomSegmentAnalysis development={devData} />
+      {/* ── Gated: full pricing ladder + floor PSF + sold/resale comps ──
+          Soft email-wall (LeadGate) — content stays in the DOM (SEO-indexable),
+          humans hit the wall, one email captures the lead + unlocks all gates. */}
+      <LeadGate
+        id={`pricing-${devData.slug}`}
+        development={devData.name}
+        source="detail-pricing"
+        title={`Unlock ${devData.name} pricing & sold comps`}
+        subtitle="Full pricing ladder, floor-by-floor PSF, and what units actually sold for — sourced from Stellar MLS. Enter your email to view."
+      >
+        {devData.tailInventory && (devData.status === 'delivered' || devData.status === 'sold-out') && (
+          <TailInventory data={devData.tailInventory} developmentName={devData.name} />
+        )}
+        <PricingLadder development={devData} />
+        <TowerHeatmap development={devData} />
+        <BedroomSegmentAnalysis development={devData} />
+      </LeadGate>
       <CompetitivePosition development={devData} />
       <LocationIntelligence development={devData} />
       <BuildingSpecs development={devData} />
