@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       const subjectSubject = resolvedDevSlug ?? 'general';
       await resend.emails.send({
         from: 'Tampa Bay Market Report <leads@updates.tampabaymarketreport.com>',
-        to: ['brian@tampabaymarketreport.com'],
+        to: [process.env.ADMIN_EMAIL ?? 'Brian@CorcoranDwellings.com'],
         subject: `${subjectPrefix} ${subjectSubject} — ${headline}`,
         html: `
           <div style="font-family: -apple-system, sans-serif; max-width: 560px; margin: 0 auto;">

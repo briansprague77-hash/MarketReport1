@@ -254,7 +254,7 @@ export default function ResaleMarketClient() {
                 className="w-full rounded-lg border border-charcoal-700 bg-charcoal-900/60 px-4 py-3 text-sm font-body text-ivory-100 placeholder-charcoal-500 focus:border-gold-500/50 focus:outline-none"
               />
               {status === 'error' && (
-                <p className="text-sm font-body text-red-400">Something went wrong — try again or email brian@historicstpete.com.</p>
+                <p className="text-sm font-body text-red-400">Something went wrong — try again or email Brian@CorcoranDwellings.com.</p>
               )}
               <button
                 type="submit" disabled={status === 'sending'}
