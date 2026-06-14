@@ -30,7 +30,7 @@ export default async function AdminLeadsPage() {
   const supabase = getSupabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/signin?next=/admin/leads');
-  const adminEmail = process.env.ADMIN_EMAIL ?? 'brian@tampabaymarketreport.com';
+  const adminEmail = process.env.ADMIN_EMAIL ?? 'Brian@CorcoranDwellings.com';
   if ((user.email ?? '').toLowerCase() !== adminEmail.toLowerCase()) {
     redirect('/'); // not the admin
   }
@@ -58,7 +58,24 @@ export default async function AdminLeadsPage() {
     <main className="min-h-screen bg-charcoal-950 text-ivory-100 px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-6xl mx-auto">
         <h1 className="font-heading text-3xl font-bold text-ivory-50 mb-1">Leads</h1>
-        <p className="text-sm text-charcoal-400 mb-8">{leads.length} most recent captured leads.</p>
+        <p className="text-sm text-charcoal-400 mb-6">{leads.length} most recent captured leads.</p>
+
+        <div className="flex flex-wrap gap-3 mb-8">
+          <a
+            href="/api/admin/leads-export"
+            className="inline-flex items-center rounded-lg border border-gold-500/40 bg-gold-500/10 px-4 py-2 text-sm font-body font-semibold text-gold-300 hover:bg-gold-500/20 transition-colors"
+          >
+            ↓ Export CSV
+          </a>
+          <a
+            href="https://app.commonroom.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-lg border border-charcoal-700 bg-charcoal-900/60 px-4 py-2 text-sm font-body font-semibold text-ivory-300 hover:bg-charcoal-800 transition-colors"
+          >
+            De-anonymized visitors in Common Room ↗
+          </a>
+        </div>
 
         {/* Summary */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">

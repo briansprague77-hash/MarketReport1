@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     try {
       await resend.emails.send({
         from: 'Tampa Bay Market Report <leads@updates.tampabaymarketreport.com>',
-        to: ['brian@tampabaymarketreport.com'],
+        to: [process.env.ADMIN_EMAIL ?? 'Brian@CorcoranDwellings.com'],
         subject: `New Lead: ${name || email} — ${source || 'Website'}`,
         html: `
           <div style="font-family: -apple-system, sans-serif; max-width: 560px; margin: 0 auto;">

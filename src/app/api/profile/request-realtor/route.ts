@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   // Email Brian for review
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const adminEmail = process.env.ADMIN_EMAIL ?? 'brian@tampabaymarketreport.com';
+    const adminEmail = process.env.ADMIN_EMAIL ?? 'Brian@CorcoranDwellings.com';
     await resend.emails.send({
       from: 'DeveloperCertified <noreply@updates.tampabaymarketreport.com>',
       to: [adminEmail],
