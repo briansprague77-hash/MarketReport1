@@ -43,8 +43,7 @@ const BREAK_IMAGES = [
   { src: '/images/developments/waldorf-astoria/renderings/wa-terrace.jpg', caption: 'Waldorf Astoria — Private Dining Terrace at Sunset' },
   { src: '/images/developments/waldorf-astoria/renderings/wa-primary-bedroom.jpg', caption: 'Waldorf Astoria — Primary Suite with Panoramic City Views' },
   { src: '/images/developments/waldorf-astoria/renderings/wa-kitchen.jpg', caption: "Waldorf Astoria — Chef's Kitchen with Marble Island" },
-  { src: '/images/developments/viceroy-clearwater/pool.jpg', caption: 'Viceroy Clearwater Beach — Resort Pool with Gulf Views' },
-  { src: '/images/developments/viceroy-clearwater/club-house.jpg', caption: "Viceroy Clearwater Beach — Residents' Lounge" },
+  { src: '/images/developments/viceroy-clearwater/club-house.jpg', caption: "Viceroy Clearwater Beach — Beachfront Lounge & Outdoor Bar" },
   { src: '/images/developments/viceroy-clearwater/spa.jpg', caption: 'Viceroy Clearwater Beach — Beachfront Terrace & Wellness Deck' },
 ];
 
